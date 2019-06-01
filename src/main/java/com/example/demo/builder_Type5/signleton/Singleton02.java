@@ -12,7 +12,7 @@ public class Singleton02 {
 
     private Singleton02() {}
 
-    private Singleton02 getInstance() {
+    public static Singleton02 getInstance() {
         return INSTANCE;
     }
 }
