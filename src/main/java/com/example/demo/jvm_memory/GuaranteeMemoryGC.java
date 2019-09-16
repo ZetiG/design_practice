@@ -1,4 +1,4 @@
-package com.example.demo.builder_Type5.jvm_memory;
+package com.example.demo.jvm_memory;
 
 /**
  * JVM Args：-Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8

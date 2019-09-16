@@ -1,4 +1,4 @@
-package com.example.demo.builder_Type5.jvm_memory;
+package com.example.demo.jvm_memory;
 
 /**
  * 此代码演示两点：
