@@ -1,6 +1,8 @@
 package com.example.demo.moreThread.Thread_01;
 
 
+import static java.lang.System.*;
+
 /**
  * 经典多线程问题
  * 子线程循环10次，主线程循环100次，来回循环50次
@@ -12,7 +14,7 @@ public class ThreadTest {
         //主线程
         public synchronized void mainThread() {
             for (int i = 0; i < 100; i++) {
-                System.err.println(Thread.currentThread().getName()+"执行"+i);
+                err.println(Thread.currentThread().getName()+"执行"+i);
             }
             this.notify();
             try {
@@ -25,7 +27,7 @@ public class ThreadTest {
         //子线程
         public synchronized void subThread() {
             for (int i = 0; i < 10; i++) {
-                System.err.println(Thread.currentThread().getName()+"执行"+i);
+                err.println(Thread.currentThread().getName()+"执行"+i);
             }
             this.notify();
             try {

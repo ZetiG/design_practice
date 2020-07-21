@@ -1,7 +1,7 @@
 package com.example.demo.builder_Type5.signleton;
 
 /**
- * 单例
+ * 单例-饿汉式
  * 基本实现思路：
  * 1.将该类的构造方法定义为私有方法。
  * 2.在该类内提供一个静态方法，当我们调用这个方法时，如果持有的引用不为空时就返回这个引用，为空就和创建该类的实例并将实例的引用赋予该类保持的引用。
@@ -12,7 +12,7 @@ package com.example.demo.builder_Type5.signleton;
  */
 public class Singleton01 {
 
-    private final static Singleton01 INSTANCE = new Singleton01();
+    private static final  Singleton01 INSTANCE = new Singleton01();
 
     private Singleton01 () {}
 

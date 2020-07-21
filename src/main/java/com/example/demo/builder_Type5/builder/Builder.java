@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Builder {
 
-    private List<Sender> list = new ArrayList<Sender>();
+    private List<Sender> list = new ArrayList<>();
 
     public void produceMail(int count) {
         for (int i = 0; i < count; i++) {
