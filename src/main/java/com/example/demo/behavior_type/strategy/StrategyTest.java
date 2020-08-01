@@ -30,6 +30,8 @@ public class StrategyTest {
         boolean completeTask = task01.isCompleteTask();
         System.err.println("任务是否完成：" + completeTask);
 
+        task01.addIntegral(1L);
+
     }
 
 }

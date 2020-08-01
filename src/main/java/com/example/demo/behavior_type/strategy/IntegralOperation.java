@@ -9,25 +9,19 @@ package com.example.demo.behavior_type.strategy;
 public interface IntegralOperation {
 
     /**
-     * 查询积分
-     *
-     * @return
-     */
-    Integer getIntegral();
-
-    /**
      * 增加积分
      *
      * @return
      */
-    Integer addIntegral(Integer var);
+    Integer addIntegral(Long userId);
+
 
     /**
      * 减少积分
      *
      * @return
      */
-    Integer reduceIntegral(Integer var);
+    Integer reduceIntegral(Long userId);
 
 
 }

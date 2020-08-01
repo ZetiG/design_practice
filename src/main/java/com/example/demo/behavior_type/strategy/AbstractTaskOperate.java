@@ -2,6 +2,10 @@ package com.example.demo.behavior_type.strategy;
 
 import com.example.demo.behavior_type.strategy.db.TaskDao;
 import com.example.demo.behavior_type.strategy.db.UserCompleteTaskLogDao;
+import com.example.demo.behavior_type.strategy.db.UserDao;
+import com.example.demo.behavior_type.strategy.db.UserIntegralDetailsDao;
+import com.example.demo.behavior_type.strategy.entity.Task;
+import com.example.demo.behavior_type.strategy.entity.User;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,12 +15,37 @@ import org.springframework.stereotype.Service;
  * @date 2020/8/1 10:45 上午
  */
 @Service
-public abstract class AbstractTaskOperate extends Task {
+public abstract class AbstractTaskOperate extends AbstractTask implements IntegralOperation {
     private static final long serialVersionUID = 8020659335426062538L;
 
     private static final TaskDao taskDao = new TaskDao();
 
     private static final UserCompleteTaskLogDao completeTaskLogDao = new UserCompleteTaskLogDao();
+
+    private static final UserDao userDao = new UserDao();
+
+    private static final UserIntegralDetailsDao userIntegralDetailsDao = new UserIntegralDetailsDao();
+
+    private static final UserCompleteTaskLogDao userCompleteTaskLogDao = new UserCompleteTaskLogDao();
+
+
+    @Override
+    public Integer addIntegral(Long userId) {
+        User user = userDao.selectById(userId);
+        if (user == null) return 0;
+
+        User user1 = new User();
+        user1.setId(userId);
+        int addIntegral = user1.getIntegral() + getTask().getAddIntegral();
+        user1.setIntegral(addIntegral);
+        userDao.update(user1);
+        return addIntegral;
+    }
+
+    @Override
+    public Integer reduceIntegral(Long userId) {
+        return null;
+    }
 
 
     /**
