@@ -1,6 +1,9 @@
 package com.example.demo.behavior_type.strategy;
 
 
+import com.example.demo.behavior_type.strategy.task.Task01;
+import com.example.demo.behavior_type.strategy.task.Task02;
+import com.example.demo.behavior_type.strategy.task.Task03;
 import lombok.Getter;
 
 /**
@@ -12,9 +15,9 @@ import lombok.Getter;
 
 public enum TaskTypeEnum {
 
-    TASK_01(1, "测试任务1"),
-    TASK_02(2, "测试任务2"),
-    TASK_03(3, "测试任务3"),
+    TASK_01(1, "测试任务1", Task01.class),
+    TASK_02(2, "测试任务2", Task02.class),
+    TASK_03(3, "测试任务3", Task03.class),
     ;
 
     /**
@@ -29,10 +32,17 @@ public enum TaskTypeEnum {
     @Getter
     private final Integer code;
 
+    /**
+     * 任务类型code
+     */
+    @Getter
+    private final Class<? extends IntegralOperation> integralOperation;
 
-    TaskTypeEnum(Integer code, String taskName) {
+
+    TaskTypeEnum(Integer code, String taskName, Class<? extends IntegralOperation> integralOperation) {
         this.code = code;
         this.taskName = taskName;
+        this.integralOperation = integralOperation;
     }
 
     /**

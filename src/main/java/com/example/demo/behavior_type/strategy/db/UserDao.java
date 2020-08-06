@@ -14,7 +14,7 @@ public class UserDao {
         System.out.println("查询用户数据库，当前用户id：" + userId);
         User user = new User();
         user.setId(userId);
-
+        user.setIntegral(0);
         return user;
     }
 

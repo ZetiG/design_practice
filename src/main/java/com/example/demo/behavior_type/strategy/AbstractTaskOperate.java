@@ -8,6 +8,8 @@ import com.example.demo.behavior_type.strategy.entity.Task;
 import com.example.demo.behavior_type.strategy.entity.User;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Field;
+
 /**
  * Description:  任务操作抽象类
  *
@@ -36,7 +38,7 @@ public abstract class AbstractTaskOperate extends AbstractTask implements Integr
 
         User user1 = new User();
         user1.setId(userId);
-        int addIntegral = user1.getIntegral() + getTask().getAddIntegral();
+        int addIntegral = user.getIntegral() + getTask().getAddIntegral();
         user1.setIntegral(addIntegral);
         userDao.update(user1);
         return addIntegral;
