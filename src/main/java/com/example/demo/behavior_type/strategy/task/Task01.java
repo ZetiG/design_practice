@@ -11,6 +11,8 @@ import com.example.demo.behavior_type.strategy.TaskTypeEnum;
  */
 public class Task01 extends AbstractTaskOperate {
 
+    private static final long serialVersionUID = 5124052619410993326L;
+
     public Task01() {
         this.setTaskType(TaskTypeEnum.TASK_01);
     }

@@ -1,5 +1,7 @@
 package com.example.demo.behavior_type.strategy;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * Description:  (用一句话描述该文件做什么)
  *
@@ -8,16 +10,11 @@ package com.example.demo.behavior_type.strategy;
  */
 public class StrategyContext {
 
-    public static boolean addUserIntegral(Integer taskType, Long userId) throws InstantiationException, IllegalAccessException {
+
+    public static boolean addUserIntegral(Integer taskType, Long userId) throws InvocationTargetException,
+            NoSuchMethodException, InstantiationException, IllegalAccessException {
         IntegralOperation integralOperation = StrategyFactory.getInstance().getTaskInterfaceByType(taskType);
         return integralOperation.addIntegral(userId) > 0;
     }
 
-//    public IntegralOperation getStrategy() {
-//        return integralOperation;
-//    }
-//
-//    public void setStrategy(IntegralOperation integralOperation) {
-//        this.integralOperation = integralOperation;
-//    }
 }

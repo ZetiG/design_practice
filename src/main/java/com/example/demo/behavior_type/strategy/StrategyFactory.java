@@ -1,12 +1,6 @@
 package com.example.demo.behavior_type.strategy;
 
-import com.example.demo.behavior_type.strategy.task.Task01;
-import com.example.demo.behavior_type.strategy.task.Task02;
-import com.example.demo.behavior_type.strategy.task.Task03;
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
-
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * Description:  (用一句话描述该文件做什么)
@@ -15,7 +9,7 @@ import java.util.Map;
  * @date 2020/8/6 6:22 下午
  */
 public class StrategyFactory {
-    private static StrategyFactory factory = new StrategyFactory();
+    private static final StrategyFactory factory = new StrategyFactory();
 
     public StrategyFactory() {
     }
@@ -24,10 +18,10 @@ public class StrategyFactory {
         return factory;
     }
 
-    public IntegralOperation getTaskInterfaceByType(Integer taskType) throws IllegalAccessException,
-            InstantiationException {
+    public IntegralOperation getTaskInterfaceByType(Integer taskType) throws NoSuchMethodException,
+            IllegalAccessException, InvocationTargetException, InstantiationException {
         if (taskType == null) return null;
-        return TaskTypeEnum.TASK_01.getIntegralOperation().newInstance();
+        return TaskTypeEnum.TASK_01.getIntegralOperation().getConstructor().newInstance();
 
     }
 

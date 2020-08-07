@@ -23,7 +23,7 @@ public class TaskDao {
 
         Task abstractTask = new Task();
         abstractTask.setTaskType(TaskTypeEnum.TASK_02.getCode());
-        abstractTask.setIsSelect(0);
+        abstractTask.setIsSelect(1);
         abstractTask.setAddIntegral(30);
         abstractTask.setUpperLimit(3);
         return abstractTask;
