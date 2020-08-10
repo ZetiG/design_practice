@@ -13,7 +13,9 @@ public interface IntegralOperation {
      *
      * @return
      */
-    Integer addIntegral(Long userId);
+    default Integer addIntegral(Long userId) {
+        return null;
+    }
 
 
     /**
@@ -21,7 +23,9 @@ public interface IntegralOperation {
      *
      * @return
      */
-    Integer reduceIntegral(Long userId);
+    default Integer reduceIntegral(Long userId) {
+        return null;
+    }
 
 
 }

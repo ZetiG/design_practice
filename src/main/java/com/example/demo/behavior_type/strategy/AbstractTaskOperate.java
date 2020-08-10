@@ -8,7 +8,6 @@ import com.example.demo.behavior_type.strategy.entity.Task;
 import com.example.demo.behavior_type.strategy.entity.User;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Field;
 
 /**
  * Description:  任务操作抽象类
@@ -97,7 +96,7 @@ public abstract class AbstractTaskOperate extends AbstractTask implements Integr
      * @return
      */
     private Task getTask() {
-        return taskDao.selectByType(super.getTaskType().getCode());
+        return taskDao.selectByType(this.getTaskType().getCode());
     }
 
 
