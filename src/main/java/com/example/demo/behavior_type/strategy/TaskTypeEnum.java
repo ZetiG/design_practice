@@ -33,7 +33,7 @@ public enum TaskTypeEnum {
     private final Integer code;
 
     /**
-     * 任务类型code
+     * 具体任务类
      */
     @Getter
     private final Class<? extends IntegralOperation> integralOperation;
