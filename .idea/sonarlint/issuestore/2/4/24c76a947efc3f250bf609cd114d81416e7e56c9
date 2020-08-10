@@ -1,0 +1,19 @@
+
+^
+java:S34570"AFormat specifiers should be used instead of string concatenation.(Öä‰ö8¾ÚïÂ¹.
+T
+java:S2629%"7Use the built-in formatting to construct this argument.(¥½Ó8øñÎÂ¹.
+T
+java:S2629)"7Use the built-in formatting to construct this argument.(Õÿ­8„ÓíÂ¹.
+^
+java:S3457)"AFormat specifiers should be used instead of string concatenation.(Õÿ­8¾ÚïÂ¹.
+c
+java:S2142,"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€8ŸÿÕÂ¹.
+^
+java:S3457+"AFormat specifiers should be used instead of string concatenation.(º©²Á8¾ÚïÂ¹.
+^
+java:S3457%"AFormat specifiers should be used instead of string concatenation.(¥½Ó8¾ÚïÂ¹.
+T
+java:S26290"7Use the built-in formatting to construct this argument.(Öä‰ö8ÎÆ×Â¹.
+T
+java:S2629+"7Use the built-in formatting to construct this argument.(º©²Á8ÂıêÂ¹.

@@ -1,0 +1,50 @@
+
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¢ˆ×Ìşÿÿÿÿ
+Z
+java:S1854"?Remove this useless assignment to local variable "allocation7".(ÿª„ßûÿÿÿÿ
+U
+java:S1854"?Remove this useless assignment to local variable "allocation6".(úŸ©ˆ
+Z
+java:S1854"?Remove this useless assignment to local variable "allocation5".(¨ô­½ûÿÿÿÿ
+U
+java:S1854"?Remove this useless assignment to local variable "allocation4".(³–İ
+U
+java:S1854"?Remove this useless assignment to local variable "allocation6".(‚†º
+Z
+java:S1854"?Remove this useless assignment to local variable "allocation5".(µ¶ôŠûÿÿÿÿ
+U
+java:S1854"?Remove this useless assignment to local variable "allocation4".(Í«æ’
+U
+java:S1854"?Remove this useless assignment to local variable "allocation1".(ŸÄ¸À
+Z
+java:S1854"?Remove this useless assignment to local variable "allocation3".(ˆ…Ô¬ùÿÿÿÿ
+Z
+java:S1854"?Remove this useless assignment to local variable "allocation2".(³¯ˆÅüÿÿÿÿ
+Z
+java:S1854"?Remove this useless assignment to local variable "allocation1".(Ğ½ËØûÿÿÿÿ
+D
+java:S1659")Declare "allocation2" on a separate line.(ÛÀÍóüÿÿÿÿ
+D
+java:S1659")Declare "allocation3" on a separate line.(ÛÀÍóüÿÿÿÿ
+D
+java:S1659")Declare "allocation4" on a separate line.(ÛÀÍóüÿÿÿÿ
+D
+java:S1659")Declare "allocation5" on a separate line.(ÛÀÍóüÿÿÿÿ
+D
+java:S1659")Declare "allocation6" on a separate line.(ÛÀÍóüÿÿÿÿ
+D
+java:S1659")Declare "allocation7" on a separate line.(ÛÀÍóüÿÿÿÿ
+K
+java:S1481"0Remove this unused "allocation1" local variable.(ÛÀÍóüÿÿÿÿ
+K
+java:S1481"0Remove this unused "allocation2" local variable.(ÛÀÍóüÿÿÿÿ
+K
+java:S1481"0Remove this unused "allocation3" local variable.(ÛÀÍóüÿÿÿÿ
+K
+java:S1481"0Remove this unused "allocation4" local variable.(ÛÀÍóüÿÿÿÿ
+K
+java:S1481"0Remove this unused "allocation5" local variable.(ÛÀÍóüÿÿÿÿ
+K
+java:S1481"0Remove this unused "allocation6" local variable.(ÛÀÍóüÿÿÿÿ
+K
+java:S1481"0Remove this unused "allocation7" local variable.(ÛÀÍóüÿÿÿÿ
