@@ -1,6 +1,8 @@
 package com.example.demo.behavior_type.strategy;
 
+import com.example.demo.behavior_type.strategy.entity.Task;
 import com.example.demo.behavior_type.strategy.task.Task01;
+import com.example.demo.behavior_type.strategy.task.Task03;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -14,7 +16,7 @@ public class StrategyTest {
 
 
     public static void main(String[] args) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
-        Task01 task01 = new Task01();
+//        Task01 task01 = new Task01();
 
 //        System.err.println("当前任务是否启用：" + task01.isEnable());
 //
@@ -32,7 +34,7 @@ public class StrategyTest {
 //        System.err.println("任务是否完成：" + completeTask);
 
 
-//        StrategyContext.addUserIntegral(1, 1L);
+        StrategyContext.addUserIntegral(TaskTypeEnum.TASK_03, 1L);
 
 
     }

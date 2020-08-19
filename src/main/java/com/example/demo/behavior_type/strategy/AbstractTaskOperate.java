@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public abstract class AbstractTaskOperate extends AbstractTask implements IntegralOperation {
-    private static final long serialVersionUID = 8020659335426062538L;
+    private static final long serialVersionUID = 1L;
 
     private static final TaskDao taskDao = new TaskDao();
 
@@ -40,11 +40,13 @@ public abstract class AbstractTaskOperate extends AbstractTask implements Integr
         int addIntegral = user.getIntegral() + getTask().getAddIntegral();
         user1.setIntegral(addIntegral);
         userDao.update(user1);
+        System.err.println("加积分成功===>>> userId=" + userId);
         return addIntegral;
     }
 
     @Override
     public Integer reduceIntegral(Long userId) {
+        System.err.println("减积分成功===>>> userId=" + userId);
         return null;
     }
 

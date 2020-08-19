@@ -18,8 +18,7 @@ public class UserCompleteTaskLogDao {
      * @return
      */
     public Integer selectCompleteLogByType(Integer type) {
-        String msgByCode = TaskTypeEnum.getMsgByCode(type);
-        System.out.println("查询任务完成情况数据库，当前任务：" + msgByCode);
+        System.out.println("查询任务完成情况数据库，当前任务：" + type);
         return 3;
     }
 

@@ -1,6 +1,7 @@
 package com.example.demo.behavior_type.strategy.task;
 
-import com.example.demo.behavior_type.strategy.IntegralOperation;
+
+import com.example.demo.behavior_type.strategy.AbstractTaskOperate;
 import com.example.demo.behavior_type.strategy.TaskTypeEnum;
 
 /**
@@ -9,11 +10,11 @@ import com.example.demo.behavior_type.strategy.TaskTypeEnum;
  * @author Zeti
  * @date 2020/8/1 2:16 下午
  */
-public class Task03 implements TestItf {
+public class Task03 extends AbstractTaskOperate {
 
-//    public Task03() {
-//        this.setTaskType(TaskTypeEnum.TASK_03);
-//    }
+    public Task03() {
+        this.setTaskType(TaskTypeEnum.TASK_03);
+    }
 
 
 }

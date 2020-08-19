@@ -10,11 +10,15 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class StrategyContext {
 
+    private StrategyContext() {
+    }
 
-    public static boolean addUserIntegral(Integer taskType, Long userId) throws InvocationTargetException,
+    public static boolean addUserIntegral(TaskTypeEnum typeEnum, Long userId) throws InvocationTargetException,
             NoSuchMethodException, InstantiationException, IllegalAccessException {
-        IntegralOperation integralOperation = StrategyFactory.getInstance().getTaskInterfaceByType(taskType);
+        IntegralOperation integralOperation = StrategyFactory.getInstance().getTaskInterfaceByType(typeEnum.getCode());
         return integralOperation.addIntegral(userId) > 0;
     }
+
+
 
 }

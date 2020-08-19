@@ -1,6 +1,5 @@
 package com.example.demo.behavior_type.strategy.task;
 
-import com.example.demo.behavior_type.strategy.AbstractTaskOperate;
 import com.example.demo.behavior_type.strategy.IntegralOperation;
 
 /**
@@ -10,6 +9,5 @@ import com.example.demo.behavior_type.strategy.IntegralOperation;
  * @date 2020/8/10 10:20 上午
  */
 public interface TestItf extends IntegralOperation {
-
 
 }

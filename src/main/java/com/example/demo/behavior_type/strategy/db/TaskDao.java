@@ -18,8 +18,7 @@ public class TaskDao {
      * @return
      */
     public Task selectByType(Integer type) {
-        String msgByCode = TaskTypeEnum.getMsgByCode(type);
-        System.out.println("查询任务数据库，当前任务：" + msgByCode);
+        System.out.println("查询任务数据库，当前任务：" + type);
 
         Task abstractTask = new Task();
         abstractTask.setTaskType(TaskTypeEnum.TASK_02.getCode());

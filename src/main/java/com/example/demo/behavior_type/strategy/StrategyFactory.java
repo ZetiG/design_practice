@@ -11,9 +11,6 @@ import java.lang.reflect.InvocationTargetException;
 public class StrategyFactory {
     private static final StrategyFactory factory = new StrategyFactory();
 
-    public StrategyFactory() {
-    }
-
     public static StrategyFactory getInstance() {
         return factory;
     }
@@ -21,8 +18,7 @@ public class StrategyFactory {
     public IntegralOperation getTaskInterfaceByType(Integer taskType) throws NoSuchMethodException,
             IllegalAccessException, InvocationTargetException, InstantiationException {
         if (taskType == null) return null;
-        return TaskTypeEnum.TASK_01.getIntegralOperation().getConstructor().newInstance();
-
+        return TaskTypeEnum.getByCode(taskType).getIntegralOperation().getConstructor().newInstance();
     }
 
 
