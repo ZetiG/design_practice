@@ -1,3 +1,9 @@
-server.port=8888
-spring.application.name=design-demo
-spring.profiles.active=local
+server:
+  port: 8888
+
+spring:
+  application:
+    name: design-practice-demo
+  profiles:
+    active: local
+
