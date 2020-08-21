@@ -1,7 +1,6 @@
 package com.example.demo.socket;
 
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
@@ -10,22 +9,27 @@ import java.net.Socket;
  * @author Zeti
  * @date 2020/8/21 2:52 下午
  */
-public class SocketStudy {
+public class Socket_Client {
 
 
     public static void main(String[] args) {
 
-        ServerSocket serverSocket;
         try {
-            serverSocket = new ServerSocket(1234);
+            Socket socket = new Socket("127.0.0.1", 1234);
 
-            Socket socket = serverSocket.accept();
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            String str = bufferedReader.readLine();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in, "UTF-8"));
 
-            System.out.println(str);
+            while (true) {
+                String str = bufferedReader.readLine();
+
+                bufferedWriter.write(str);
+                bufferedWriter.write("\n");
+                bufferedWriter.flush();
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -33,6 +37,5 @@ public class SocketStudy {
 
     }
 
-    
 
 }
