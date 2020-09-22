@@ -1,5 +1,8 @@
-package com.example.demo.moreThread.Thread_02;
+package com.example.demo.moreThread.thread_02;
 
+/**
+ * 多线程-生产者消费者问题
+ */
 public class ThreadTest {
     public static void main(String[] args) {
         Product p = new Product();

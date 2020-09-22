@@ -1,4 +1,4 @@
-package com.example.demo.moreThread.Thread_02;
+package com.example.demo.moreThread.thread_02;
 
 /**
  * 生产者
