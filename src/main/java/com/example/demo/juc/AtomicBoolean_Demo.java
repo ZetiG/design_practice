@@ -2,7 +2,6 @@ package com.example.demo.juc;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.comparator.Comparators;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -13,18 +12,18 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @author Zeti
  * @date 2020/7/29 9:37 上午
  */
-public class AtomicBooleanTest implements Runnable {
+public class AtomicBoolean_Demo implements Runnable {
     private static AtomicBoolean exit = new AtomicBoolean(false);
-    private Logger logger = LoggerFactory.getLogger(AtomicBooleanTest.class);
+    private Logger logger = LoggerFactory.getLogger(AtomicBoolean_Demo.class);
     private String name;
 
-    private AtomicBooleanTest(String name) {
+    private AtomicBoolean_Demo(String name) {
         this.name = name;
     }
 
     public static void main(String[] args) {
-        AtomicBooleanTest booleanTest1 = new AtomicBooleanTest("ones");
-        AtomicBooleanTest booleanTest2 = new AtomicBooleanTest("twos");
+        AtomicBoolean_Demo booleanTest1 = new AtomicBoolean_Demo("ones");
+        AtomicBoolean_Demo booleanTest2 = new AtomicBoolean_Demo("twos");
         new Thread(booleanTest1).start();
         new Thread(booleanTest2).start();
 

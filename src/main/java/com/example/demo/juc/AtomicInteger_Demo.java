@@ -12,22 +12,22 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author Zeti
  * @date 2020/7/29 10:01 上午
  */
-public class AtomicIntegerTest implements Runnable {
-    private static final Logger logger = LoggerFactory.getLogger(AtomicIntegerTest.class);
+public class AtomicInteger_Demo implements Runnable {
+    private static final Logger logger = LoggerFactory.getLogger(AtomicInteger_Demo.class);
 
     private String name;
 
     private AtomicInteger count = new AtomicInteger(0);
 
-    public AtomicIntegerTest(String name) {
+    public AtomicInteger_Demo(String name) {
         this.name = name;
     }
 
     public static void main(String[] args) {
-        AtomicIntegerTest atomicIntegerTest1 = new AtomicIntegerTest("a");
-        AtomicIntegerTest atomicIntegerTest2 = new AtomicIntegerTest("b");
-        new Thread(atomicIntegerTest1).start();
-        new Thread(atomicIntegerTest2).start();
+        AtomicInteger_Demo atomicIntegerDemo1 = new AtomicInteger_Demo("a");
+        AtomicInteger_Demo atomicIntegerDemo2 = new AtomicInteger_Demo("b");
+        new Thread(atomicIntegerDemo1).start();
+        new Thread(atomicIntegerDemo2).start();
 
     }
 
