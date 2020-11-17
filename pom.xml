@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Demo</name>
+    <name>DesignPractice</name>
     <description>23种设计模式</description>
 
     <parent>
