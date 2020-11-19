@@ -1,7 +1,12 @@
 package com.example.demo.blocking_queue;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -12,7 +17,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @date 2020/11/17 下午2:58
  */
 public class ArrayBlockingQueueWithLock<E> implements IBlockingQueue<E> {
-
+    private static final Logger logger = LoggerFactory.getLogger(ArrayBlockingQueueWithSync.class);
 
     /**
      * Main lock guarding all access
@@ -72,6 +77,29 @@ public class ArrayBlockingQueueWithLock<E> implements IBlockingQueue<E> {
         return addQueue(e);
     }
 
+    @Override
+    public boolean put(E e, long timeout, TimeUnit unit) throws InterruptedException {
+        if (e == null) {
+            throw new NullPointerException("add queue parameter is null");
+        }
+
+        Objects.requireNonNull(e);
+        long nanos = unit.toNanos(timeout);
+        final ReentrantLock lock = this.lock;
+        lock.lockInterruptibly();
+        try {
+            while (size == arr.length) {
+                if (nanos <= 0L)
+                    return false;
+                nanos = notFull.awaitNanos(nanos);
+            }
+            addQueue(e);
+            return true;
+        } finally {
+            lock.unlock();
+        }
+
+    }
 
     private boolean addQueue(E e) throws InterruptedException {
         lock.lockInterruptibly();
@@ -156,4 +184,5 @@ public class ArrayBlockingQueueWithLock<E> implements IBlockingQueue<E> {
             lock.unlock();
         }
     }
+
 }

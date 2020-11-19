@@ -19,7 +19,7 @@ public interface IBlockingQueue<E> extends IQueue<E> {
      * @param unit
      * @return
      */
-//    boolean put(E e, long timeout, TimeUnit unit);
+    boolean put(E e, long timeout, TimeUnit unit) throws InterruptedException;
 
 
 }

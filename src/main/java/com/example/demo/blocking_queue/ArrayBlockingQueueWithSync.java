@@ -1,7 +1,11 @@
 package com.example.demo.blocking_queue;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Description: 基于数组和synchronized实现的阻塞队列
@@ -10,6 +14,7 @@ import java.util.List;
  * @date 2020/11/17 下午2:19
  */
 public class ArrayBlockingQueueWithSync<E> implements IBlockingQueue<E> {
+    private static final Logger logger = LoggerFactory.getLogger(ArrayBlockingQueueWithSync.class);
 
     /**
      * 数组
@@ -49,6 +54,24 @@ public class ArrayBlockingQueueWithSync<E> implements IBlockingQueue<E> {
         if (size == arr.length) {
             return false;
         }
+        addQueue(e);
+        return true;
+    }
+
+    @Override
+    public synchronized boolean put(E e, long timeout, TimeUnit unit) throws InterruptedException {
+        if (e == null) {
+            throw new NullPointerException("add queue parameter is null");
+        }
+
+        long nanos = unit.toNanos(timeout);
+        while (arr.length == size) {
+            if (nanos <= 0L) {
+                return false;
+            }
+            this.wait(nanos);
+        }
+
         addQueue(e);
         return true;
     }
