@@ -1,4 +1,4 @@
-package com.example.demo.moreThread.thread_02;
+package com.example.demo.thread.thread_02;
 
 /**
  * 多线程-生产者消费者问题

@@ -1,4 +1,4 @@
-package com.example.demo.moreThread;
+package com.example.demo.thread;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;

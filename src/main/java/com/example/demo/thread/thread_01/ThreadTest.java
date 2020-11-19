@@ -1,4 +1,4 @@
-package com.example.demo.moreThread.thread_01;
+package com.example.demo.thread.thread_01;
 
 
 import static java.lang.System.*;

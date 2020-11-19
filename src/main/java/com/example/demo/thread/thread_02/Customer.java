@@ -1,4 +1,4 @@
-package com.example.demo.moreThread.thread_02;
+package com.example.demo.thread.thread_02;
 
 /**
  * 消费者
