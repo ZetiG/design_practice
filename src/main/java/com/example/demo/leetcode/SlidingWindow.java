@@ -1,4 +1,4 @@
-package com.example.demo.algorithm;
+package com.example.demo.leetcode;
 
 /**
  * Description:  滑动窗口算法
