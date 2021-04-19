@@ -1,5 +1,7 @@
 package com.example.demo.leetcode;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,48 +27,51 @@ public class CodeLibrary {
      * 来源：力扣（LeetCode）
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
-    class Solution {
-        public int[] twoSum(int[] nums, int target) {
-            if (nums == null || nums.length <= 0) {
-                return new int[]{};
-            }
-
-            Map<Integer, Integer> map = new HashMap();
-
-            for (int i = 0; i < nums.length; i++) {
-                int a = target - nums[i];
-                if (map.containsKey(a)) {
-                    return new int[]{map.get(a), i};
-                }
-                map.put(nums[i], i);
-            }
+    public static int[] twoSum(int[] nums, int target) {
+        if (nums == null || nums.length <= 0) {
             return new int[]{};
         }
+
+        Map<Integer, Integer> map = new HashMap();
+
+        for (int i = 0; i < nums.length; i++) {
+            int a = target - nums[i];
+            if (map.containsKey(a)) {
+                return new int[]{map.get(a), i};
+            }
+            map.put(nums[i], i);
+        }
+        return new int[]{};
+    }
+
+    @Test
+    public void twoSum_test() {
+
+        int[] nums = {2,4,6,8};
+
+        int a = 8;
+
+        int[] ints = twoSum(nums, a);
+        System.err.println(ints);
     }
 
 
-    int[] a = {3,8,9,10};
 
-    int[] b = {2,4,6,12,18,20};
+    @Test
+    public void findMedianSortedArrays2_test() {
 
-    int[] c = {1,2,3,7};
-
-    int[]nums1 = {-1,1,3,5,7,19};
-
-    int[]nums2 ={2,4,6,6,10,12,14,16};
-
-
-    public static void main(String[] args) {
         int[] a = {3,8,9,10};
         int[] b = {2,4,6,12,18,20};
 
-//        double medianSortedArrays2 = findMedianSortedArrays2(a, b);
-//        System.err.println(medianSortedArrays2);
+        double medianSortedArrays2 = findMedianSortedArrays2(a, b);
+        System.err.println(medianSortedArrays2);
+
         int[]nums1 = {-1,1,3,5,7,19};
 
         int[]nums2 ={2,3,4,4,10,12,14,16};
 
-
+        double medianSortedArrays = findMedianSortedArrays(a, b);
+        System.err.println(medianSortedArrays);
 
     }
 
@@ -140,6 +145,55 @@ public class CodeLibrary {
         return (m + n) % 2 == 0 ? (median1 + median2) / 2.0 : median1;
     }
 
+
+    /**
+     * 移除元素
+     * <p>
+     *     给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
+     *
+     * 不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。
+     *
+     * 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/remove-element
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     * </p>
+     * @param nums
+     * @param val
+     * @return
+     */
+    public static int removeElement(int[] nums, int val) {
+        if (nums == null || nums.length <= 0) {
+            return 0;
+        }
+
+        int left = 0;
+        int right = nums.length;
+
+
+        while (left < right) {
+
+            if (nums[left] == val) {
+                nums[left] = nums[right - 1];
+                right--;
+
+            } else {
+                left++;
+            }
+        }
+        return left;
+    }
+
+    @Test
+    public void removeElement_test() {
+
+        int[] nums = {3,2,2,3};
+        int val = 3;
+
+        int i = removeElement(nums, val);
+        System.err.println(i);
+    }
 
 
 }
