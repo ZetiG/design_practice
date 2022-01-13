@@ -6,7 +6,7 @@ package com.example.demo.builder_Type5.signleton;
  */
 public class Singleton06 {
 
-    private static volatile Singleton06 singleton;
+    private static Singleton06 singleton;
 
     private Singleton06() {}
 
