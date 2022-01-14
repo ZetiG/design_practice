@@ -10,21 +10,26 @@ public class RemoveDuplicatesInArray {
 
 
     public static void main(String[] args) {
-        int[] arr1 = {1, 1, 2, 3, 5, 6, 6, 9};
+        int[] arr1 = {1, 1, 1, 2, 3, 5, 6, 6, 9};
         int[] arr2 = {1, 1, 1, 1, 1};
 
         // d1
-        System.err.println(tt(arr2));
+        System.err.println(tt(arr1));
 
         // d2
-        System.err.println(removeDuplicates(arr2));
+        System.err.println(removeDuplicates(arr1));
 
     }
 
+    // d1 双指针，当左右相等， 左指针不动，右指针右移；如果左右不等，则左指针右移一位，并将右指针的值赋值给左指针，同时，右指针再向右移一位；
+    // 核心：保证左指针所在的左边永远是最新且不重复的数据
     public static int tt(int[] arr) {
+        if (arr == null || arr.length <= 0) {
+            return 0;
+        }
+
         int pointer1 = 0;
         int pointer2 = 1;
-
         int arrLen = arr.length;
 
         while (arrLen > pointer2) {

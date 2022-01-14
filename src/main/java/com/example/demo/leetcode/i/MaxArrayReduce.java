@@ -25,6 +25,7 @@ public class MaxArrayReduce {
     }
 
 
+    // d1 循环遍历，后者大于前者，则直接求差值，最后求所有差值的和
     public static int tt(int[] arr) {
         if (arr == null || arr.length <= 0) {
             return 0;
@@ -41,6 +42,7 @@ public class MaxArrayReduce {
 
     // {7, 1, 2, 5, 3, 6, 4}
     // {7, 1, 2, 5,   3, 6,   4, 7,   1, 2, 5,   3, 6,   4, 1, 1, 6, 6,   3, 1}
+    // d2  找出第一个后位数小于前位数的值定义为最小值， 然后向后找出最后一个最大值，最后求所有最大值减最小值之和
     public static int t2(int[] arr) {
 
         int min = 0;
@@ -51,7 +53,9 @@ public class MaxArrayReduce {
             if (((i == arr.length - 1 || arr[i + 1] >= arr[i]) && i > 0 && arr[i] <= arr[i - 1] ))  {
                 min = arr[i];
 
-            } if (i > 0 && arr[i] > arr[i - 1] && (i == arr.length - 1 || arr[i] >= arr[i + 1])) {
+            }
+
+            if (i > 0 && arr[i] > arr[i - 1] && (i == arr.length - 1 || arr[i] >= arr[i + 1])) {
                 sum += arr[i] - min;
             }
         }
