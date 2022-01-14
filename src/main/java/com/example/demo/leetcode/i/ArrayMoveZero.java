@@ -28,7 +28,6 @@ public class ArrayMoveZero {
 
         int idx = 0;
         int count0 = 0;
-        int tmp;
 
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == 0) {
