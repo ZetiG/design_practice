@@ -17,9 +17,12 @@ public class ArrayDoubleNumSum {
         int[] a = {3, 1, 0, 4, 6};
         int t = 5;
 
+        int[] a2 = {-1, -2, -3, -4, -5};
+        int t2 = -8;
+
         // d1
-        System.err.println(Arrays.toString(sumIdx(a, t)));
-        System.err.println(Arrays.toString(sumIdx2(a, t)));
+        System.err.println(Arrays.toString(sumIdx(a2, t2)));
+        System.err.println(Arrays.toString(sumIdx2(a2, t2)));
 
     }
 
@@ -44,7 +47,7 @@ public class ArrayDoubleNumSum {
         for (int i = 0; i < arr.length; i++) {
             int rd = t - arr[i];
             for (int j = 1; j < arr.length; j++) {
-                if (rd == arr[j]) {
+                if (rd == arr[j] && i != j) {
                     if (list.contains(i)) {
                         continue;
                     }

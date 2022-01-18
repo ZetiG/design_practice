@@ -11,6 +11,28 @@ public class ApplicationTests {
 
     @Test
     public void contextLoads() {
+
+    }
+
+
+    public static void main(String[] args) {
+
+        //        int x = (i / 3) * 3 + j / 3;
+        //        int y = (i % 3) * 3 + j % 3;
+        //
+        //        int x = j / 3;
+        //        int y = j % 3;
+
+        System.err.println(0 / 3);
+        System.err.println(1 / 3);
+        System.err.println(2 / 3);
+        System.err.println(3 / 3);
+
+
+        System.err.println("------");
+
+//        System.err.println(4 % 3);
+
     }
 
 }
