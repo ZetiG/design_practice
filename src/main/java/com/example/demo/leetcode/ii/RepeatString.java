@@ -1,7 +1,9 @@
 package com.example.demo.leetcode.ii;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Description: 找出字符串中最长的回文子串
@@ -25,17 +27,16 @@ public class RepeatString {
         String s7 = "aacabdkacaa";
         String s8 = "xaabacxcabaaxcabaax";
 
-//        System.err.println(getStr(s1));
-//        System.err.println(getStr(s2));
-//        System.err.println(getStr(s3));
-//        System.err.println(getStr(s4));
-//        System.err.println(getStr(s5));
-//        System.err.println(getStr(s6));
+        System.err.println(getStr(s1));
+        System.err.println(getStr(s2));
+        System.err.println(getStr(s3));
+        System.err.println(getStr(s4));
+        System.err.println(getStr(s5));
+        System.err.println(getStr(s6));
         System.err.println(getStr(s7));
-        // TODO: 2022/1/20  
-//        System.err.println(getStr(s8));
+        System.err.println(getStr(s8));
 
-//        System.err.println(longestPalindrome(s8));
+        System.err.println(longestPalindrome(s8));
 
     }
 
@@ -48,22 +49,32 @@ public class RepeatString {
         int maxLen = 0;
         int[] maxSub = new int[2];
 
-        HashMap<Character, Integer> map = new HashMap<>();
+        HashMap<Character, List<Integer>> map = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
 
-            // 判断是否出现过
+            // 之前出现过
             if (map.containsKey(s.charAt(i))) {
 
-                if (i - map.get(s.charAt(i)) > maxLen && check(s, map.get(s.charAt(i)), i)) {
-                    maxLen = i - map.get(s.charAt(i));
+                List<Integer> sIndexs = map.get(s.charAt(i));
+                sIndexs.add(i);
+                map.put(s.charAt(i), sIndexs);
 
-                    maxSub[0] = map.get(s.charAt(i));
-                    maxSub[1] = i;
-                    continue;
+                for (Integer idx : sIndexs) {
+
+                    if (i != idx && i - idx > maxLen && check(s, idx, i)) {
+                        maxLen = i - idx;
+
+                        maxSub[0] = idx;
+                        maxSub[1] = i;
+                    }
                 }
+            } else {
+                // 首次出现
+                ArrayList<Integer> idx = new ArrayList<>();
+                idx.add(i);
+                map.put(s.charAt(i), idx);
             }
-            // TODO: 2022/1/20  
-            map.putIfAbsent(s.charAt(i), i);
+
         }
         return s.substring(maxSub[0], maxSub[1] + 1);
     }
