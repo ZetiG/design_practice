@@ -5,6 +5,9 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Arrays;
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ApplicationTests {
@@ -32,6 +35,14 @@ public class ApplicationTests {
         System.err.println("------");
 
 //        System.err.println(4 % 3);
+
+    }
+
+    public void arr2List(Integer[] arr, List<Integer> list) {
+        List<Integer> ints = Arrays.asList(new Integer[]{});
+        List<String> strings = Arrays.asList(new String[]{"aa", "bb"});
+
+
 
     }
 
