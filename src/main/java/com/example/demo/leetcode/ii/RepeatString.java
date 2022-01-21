@@ -88,54 +88,49 @@ public class RepeatString {
         return true;
     }
 
-
+    // d2 动态规划
     public static String longestPalindrome(String s) {
-        int len = s.length();
-        if (len < 2) {
+        //边界条件判断
+        if (s.length() < 2)
             return s;
-        }
+        //start表示最长回文串开始的位置，
+        //maxLen表示最长回文串的长度
+        int start = 0, maxLen = 1;
+        int length = s.length();
+        boolean[][] dp = new boolean[length][length];
+        for (int right = 1; right < length; right++) {
+            for (int left = 0; left < right; left++) {
+                //如果两种字符不相同，肯定不能构成回文子串
+                char l = s.charAt(left);
+                char r = s.charAt(right);
 
-        int maxLen = 1;
-        int begin = 0;
-        // dp[i][j] 表示 s[i..j] 是否是回文串
-        boolean[][] dp = new boolean[len][len];
-        // 初始化：所有长度为 1 的子串都是回文串
-        for (int i = 0; i < len; i++) {
-            dp[i][i] = true;
-        }
+                if (l != r)
+                    continue;
 
-        char[] charArray = s.toCharArray();
-        // 递推开始
-        // 先枚举子串长度
-        for (int L = 2; L <= len; L++) {
-            // 枚举左边界，左边界的上限设置可以宽松一些
-            for (int i = 0; i < len; i++) {
-                // 由 L 和 i 可以确定右边界，即 j - i + 1 = L 得
-                int j = L + i - 1;
-                // 如果右边界越界，就可以退出当前循环
-                if (j >= len) {
-                    break;
-                }
-
-                if (charArray[i] != charArray[j]) {
-                    dp[i][j] = false;
+                //下面是s.charAt(left)和s.charAt(right)两个
+                //字符相同情况下的判断
+                //如果只有一个字符，肯定是回文子串
+                if (right == left) {
+                    dp[left][right] = true;
+                } else if (right - left <= 2) {
+                    //类似于"aa"和"aba"，也是回文子串
+                    dp[left][right] = true;
                 } else {
-                    if (j - i < 3) {
-                        dp[i][j] = true;
-                    } else {
-                        dp[i][j] = dp[i + 1][j - 1];
-                    }
+                    //类似于"a******a"，要判断他是否是回文子串，只需要
+                    //判断"******"是否是回文子串即可
+                    dp[left][right] = dp[left + 1][right - 1];
                 }
-
-                // 只要 dp[i][L] == true 成立，就表示子串 s[i..L] 是回文，此时记录回文长度和起始位置
-                if (dp[i][j] && j - i + 1 > maxLen) {
-                    maxLen = j - i + 1;
-                    begin = i;
+                //如果字符串从left到right是回文子串，只需要保存最长的即可
+                if (dp[left][right] && right - left + 1 > maxLen) {
+                    maxLen = right - left + 1;
+                    start = left;
                 }
             }
         }
-        return s.substring(begin, begin + maxLen);
+        //截取最长的回文子串
+        return s.substring(start, start + maxLen);
     }
+
 
 
 }
