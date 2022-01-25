@@ -2,7 +2,6 @@ package com.example.demo.leetcode.i;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Description: 返回两个数组交集

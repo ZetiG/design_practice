@@ -15,7 +15,7 @@ import java.util.List;
  * @author Zeti
  * @date 2022/1/20 4:25 PM
  */
-public class RepeatString {
+public class PalindromeString {
 
     public static void main(String[] args) {
         String s1 = "babcad";
