@@ -4,7 +4,8 @@ package com.example.demo.leetcode.ii;
  * Description: 动态规划-多个数字组合求和，已知[2, 5, 7] 三个数字， 求组成27的最优解，用最少的数字
  *
  * ps1：输入：[2， 5， 7] 27  输出：6 =》 7，7，7，2，2，2（错误，非最优解）❎
- * ps1：输入：[2， 5， 7] 27  输出：5 =》 7，5，5，5，5（最优解） ✔
+ * ps2：输入：[2， 5， 7] 27  输出：5 =》 7，5，5，5，5（最优解） ✔
+ * ps3：输入：[1, 5, 11] 15  输出：3 =》 5，5，5
  *
  * @author Zeti
  * @date 2022/1/26 10:41 AM
@@ -15,12 +16,16 @@ public class SumOfNumber {
         int[] a = {2, 5, 7};
         int s = 27;
 
-//        System.err.println(sum(a, s));
+        int[] a1 = {1, 5, 11};
+        int s1 = 15;
+
         System.err.println(minCoins1(a, s));
+        System.err.println(minCoins1(a1, s1));
+
+        System.err.println(dp(a, s));
+        System.err.println(dp(a1, s1));
 
     }
-
-    // f(x) = f(27 - ak) + 1
 
     /**
      *  动态规划
@@ -37,30 +42,36 @@ public class SumOfNumber {
      *
      *  4.计算顺序
      */
-    public static int[] sum(int[] arr, int m) {
-        //
-        int[] f = new int[m + 1];
+    public static int dp(int[] arr, int s) {
 
-        int n = arr.length;
+        int[][] dp = new int[arr.length][s + 1];
 
-        f[0] = 0;
+        for (int i = 0; i < dp.length; i++) {
 
-        for (int i = 1; i <= m; i++) {
-            f[i] = Integer.MAX_VALUE;
+            for (int j = 1; j < s + 1; j++) {
 
-            for (int j = 0; j < n; j++) {
-                if (i >= arr[j] && f[i - arr[j]] != Integer.MAX_VALUE) {
-                    f[i] = Math.min(f[i - arr[j]] + 1, f[i]);
+                int val;
+
+                if (j >= arr[i] && dp[i][j - arr[i]] != Integer.MAX_VALUE) {
+
+                    val = dp[i][j - arr[i]] + 1;
+
+                } else {
+                    val = Integer.MAX_VALUE;
                 }
+
+                if (i > 0) {
+                    val = Math.min(val, dp[i - 1][j]);
+                }
+
+                dp[i][j] = val;
+
             }
         }
 
-        // TODO: 2022/1/26  
-
-
-
-        return null;
+        return dp[arr.length - 1][s] == Integer.MAX_VALUE ? -1 : dp[arr.length - 1][s];
     }
+
 
     /**
      * 求解得到aim的最小货币数（arr中的值不重复，每个值代表一种货币，但每种可以重复使用）
