@@ -19,11 +19,18 @@ public class SumOfNumber {
         int[] a1 = {1, 5, 11};
         int s1 = 15;
 
+        int[] a2 = {0, 1, 1};
+        int s2 = 2;
+
         System.err.println(minCoins1(a, s));
         System.err.println(minCoins1(a1, s1));
+        System.err.println(minCoins1(a2, s2));
+
+        System.err.println("-------------");
 
         System.err.println(dp(a, s));
         System.err.println(dp(a1, s1));
+        System.err.println(dp(a2, s2));
 
     }
 
@@ -52,7 +59,7 @@ public class SumOfNumber {
 
                 int val;
 
-                if (j >= arr[i] && dp[i][j - arr[i]] != Integer.MAX_VALUE) {
+                if (arr[i] > 0 && j >= arr[i] && dp[i][j - arr[i]] != Integer.MAX_VALUE) {
 
                     val = dp[i][j - arr[i]] + 1;
 
