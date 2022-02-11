@@ -9,8 +9,10 @@ package com.example.demo.leetcode;
 public class DP {
 
     public static void main(String[] args) {
-        dp2(9);
-        dp2_2(9);
+//        dp2(9);
+//        dp2_2(9);
+
+        dp3(new int[0][0], 5, 4);
     }
 
     /**
@@ -94,6 +96,47 @@ public class DP {
         return cur;
     }
 
+
+    /**
+     * 投资问题，m元钱, 投资给x个项目，受益最大化多少钱
+     *      x	f1（x）	f2（x）	f3（x）	f4（x）
+     *      0	0	    0	    0	    0
+     *      1	11	    0	    2	    20
+     *      2	12	    5	    10	    21
+     *      3	13	    10	    30	    22
+     *      4	14	    15	    32	    23
+     *      5	15	    20	    40	    24
+     *
+     * @param arr1   收益比例
+     * @param m     m元金钱
+     * @param x     x个项目
+     * @return      最大收益金额
+     */
+    public static int dp3(int[][] arr1, int m, int x) {
+        //
+        int[][] arr = {
+        // m->j  0, 1, 2, 3, 4, 5
+                {0,11,12,13,14,15},     // x->i 1
+                {0,0,5,10,15,20},       // x->i 2
+                {0,2,10,30,32,40},      // x->i 3
+                {0,20,21,22,23,24}};    // x->i 4
+
+        //
+        int[][] dp = new int[x+1][m+1];
+
+        for (int i = 1; i <= x; i++) {
+            for (int j = 0; j <= m; j++) {
+
+                dp[i][j] = 0;
+                for (int k = 0; k <= j; k++) {
+                    if (dp[i][j] < arr[i-1][k]+dp[i-1][j-k])
+                        dp[i][j] = arr[i-1][k]+dp[i-1][j-k];
+                }
+            }
+        }
+        System.err.println(dp[x][m]);
+        return dp[x][m];
+    }
 
 
 }
