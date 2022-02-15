@@ -9,8 +9,8 @@ package com.example.demo.leetcode;
 public class DP {
 
     public static void main(String[] args) {
-//        dp2(9);
-//        dp2_2(9);
+        dp2(9);
+        dp2_2(9);
 
         dp3(new int[0][0], 5, 4);
     }
