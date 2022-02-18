@@ -8,22 +8,22 @@ package com.example.demo.leetcode;
  */
 public class DP {
 
-    public static void main(String[] args) {
-//        dp2(9);
-//        dp2_2(9);
+//    public static void main(String[] args) {
+////        dp2(9);
+////        dp2_2(9);
+////
+////        dp3(new int[0][0], 5, 4);
 //
-//        dp3(new int[0][0], 5, 4);
-
-//        System.err.println(dp4(3, 3));
-
-        int[][] arr1 = {
-                // m->j  0,1,2,3,4,5,6,7
-                {1, 3, 1},     // x->i 1
-                {1, 5, 1},     // x->i 2
-                {4, 2, 1}      // x->i 3
-        };
-        System.err.println(dp5(arr1));
-    }
+////        System.err.println(dp4(3, 3));
+//
+//        int[][] arr1 = {
+//                // m->j  0,1,2,3,4,5,6,7
+//                {1, 3, 1},     // x->i 1
+//                {1, 5, 1},     // x->i 2
+//                {4, 2, 1}      // x->i 3
+//        };
+//        System.err.println(dp5(arr1));
+//    }
 
     /**
      * ps1: 多个数字组合求和，已知[1, 5, 11] 三个数字， 求组成15的最优解，用最少的数字
@@ -227,6 +227,60 @@ public class DP {
         }
 
         return dp[m-1][n-1];
+    }
+
+
+    /**
+     * 给定两个单词 word1 和 word2，计算出将 word1 转换成 word2 所使用的最少操作数 。
+     * 你可以对一个单词进行如下三种操作：
+     * 插入一个字符 删除一个字符 替换一个字符
+     *
+     * ps: 输入: word1 = "horse", word2 = "ros"
+     *     输出: 3
+     *     解释:
+     *     horse -> rorse (将 'h' 替换为 'r')
+     *     rorse -> rose (删除 'r')
+     *     rose -> ros (删除 'e')
+     *
+     * @return
+     */
+    public static int dp6(String s1, String s2) {
+
+        // TODO: 2022/2/18  
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        System.err.println(minDistance("horse", "ros"));
+        // x  r  o  s
+        // h
+        // o
+        // r
+        // s
+        // e
+    }
+
+    public static int minDistance(String word1, String word2) {
+        int n1 = word1.length();
+        int n2 = word2.length();
+        int[][] dp = new int[n1 + 1][n2 + 1];
+        // dp[0][0...n2]的初始值
+        for (int j = 1; j <= n2; j++)
+            dp[0][j] = dp[0][j - 1] + 1;
+        // dp[0...n1][0] 的初始值
+        for (int i = 1; i <= n1; i++) dp[i][0] = dp[i - 1][0] + 1;
+        // 通过公式推出 dp[n1][n2]
+        for (int i = 1; i <= n1; i++) {
+            for (int j = 1; j <= n2; j++) {
+                // 如果 word1[i] 与 word2[j] 相等。第 i 个字符对应下标是 i-1
+                if (word1.charAt(i - 1) == word2.charAt(j - 1)){
+                    dp[i][j] = dp[i - 1][j - 1];
+                }else {
+                    dp[i][j] = Math.min(Math.min(dp[i - 1][j - 1], dp[i][j - 1]), dp[i - 1][j]) + 1;
+                }
+            }
+        }
+        return dp[n1][n2];
     }
 
 }
