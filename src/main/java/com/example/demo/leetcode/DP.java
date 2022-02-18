@@ -9,10 +9,20 @@ package com.example.demo.leetcode;
 public class DP {
 
     public static void main(String[] args) {
-        dp2(9);
-        dp2_2(9);
+//        dp2(9);
+//        dp2_2(9);
+//
+//        dp3(new int[0][0], 5, 4);
 
-        dp3(new int[0][0], 5, 4);
+//        System.err.println(dp4(3, 3));
+
+        int[][] arr1 = {
+                // m->j  0,1,2,3,4,5,6,7
+                {1, 3, 1},     // x->i 1
+                {1, 5, 1},     // x->i 2
+                {4, 2, 1}      // x->i 3
+        };
+        System.err.println(dp5(arr1));
     }
 
     /**
@@ -138,5 +148,85 @@ public class DP {
         return dp[x][m];
     }
 
+
+    /**
+     * 一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start”）。
+     *
+     * 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。
+     *
+     * 问总共有多少条不同的路径？
+     */
+    public static int dp4(int m, int n) {
+        int[][] arr1 = {
+        // m->j  0,1,2,3,4,5,6,7
+                {0,0,0,0,0,0,0},     // x->i 1
+                {0,0,0,0,0,0,0},     // x->i 2
+                {0,0,0,0,0,0,0},     // x->i 3
+                {0,0,0,0,0,0,0},     // x->i 4
+                {0,0,0,0,0,0,0}      // x->i 5
+        };
+
+        int[][] dp = new int[m][n];
+
+        // f{} = dp[m - 1][n] + dp[m][n - 1]
+        for (int i = 0; i < m; i++) {
+            dp[i][0] = 1;
+        }
+
+        for (int i = 0; i < n; i++) {
+            dp[0][i] = 1;
+        }
+
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+            }
+        }
+
+        return dp[m - 1][n - 1];
+    }
+
+    /**
+     * 给定一个包含非负整数的 m x n 网格，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。
+     *
+     * @param arr
+     * @return
+     */
+    public static int dp5(int[][] arr) {
+        int[][] arr1 = {
+                // m->j  0,1,2,3,4,5,6,7
+                {1, 3, 1},     // x->i 1
+                {1, 5, 1},     // x->i 2
+                {4, 2, 1}      // x->i 3
+        };
+
+        int m = arr.length;
+        int n = arr[0].length;
+
+        // f{x} = min(arr[m][n-1], arr[m-1][n])
+
+        int[][] dp = new int[m][n];
+
+        // 初始值
+        dp[0][0] = arr[0][0];
+
+        // 上边第一行的值，只能是左边的相加
+        for (int i = 1; i < m; i++) {
+            dp[i][0] = dp[i-1][0] + arr[i][0];
+        }
+
+        // 第一列的值，只能是前面所有列的第一个值相加
+        for (int i = 1; i < n; i++) {
+            dp[0][i] = dp[0][i-1] + arr[0][i];
+        }
+
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                dp[i][j] = Math.min(dp[i-1][j], dp[i][j-1]) + arr[i][j];
+            }
+        }
+
+        return dp[m-1][n-1];
+    }
 
 }
