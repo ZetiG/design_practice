@@ -1,4 +1,4 @@
-package com.example.demo.coding;
+package com.example.demo.coding.order_canal_redisson;
 
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
