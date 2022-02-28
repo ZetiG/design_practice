@@ -6,4 +6,9 @@ spring:
     name: design-practice-demo
   profiles:
     active: local
+  #
+  redis:
+    host: 106.13.22.217
+    port: 6379
+    password:
 
