@@ -58,7 +58,7 @@ public class HashedWheelTimerTest {
 
             System.out.println("去数据库取消订单逻辑...");
 
-//            this.flag = false;
+            this.flag = false;
 
         }
 
