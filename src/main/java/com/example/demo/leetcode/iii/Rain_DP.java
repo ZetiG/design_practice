@@ -11,47 +11,50 @@ import java.util.Stack;
 public class Rain_DP {
 
     public static void main(String[] args) {
-        int[] height = {0,1,0,2,1,0,1,3,2,1,2,1};
-        System.err.println(trap(height));
+        int[] arr1 = {0,1,0,2,1,0,1,3,2,1,2,1};
+        int[] arr2 = {0, 4, 2, 0, 3, 2, 5, 3};
+
+        // stack
+        System.err.println(stack(arr1));
+        System.err.println(stack(arr2));
+
     }
 
-    public static int trap(int[] arr) {
+    public static int stack(int[] arr) {
         if (arr == null || arr.length <= 2) {
             return 0;
         }
 
-        // 思路：
-        // 单调不增栈，arr元素作为右墙依次入栈
-        // 出现入栈元素（右墙）比栈顶大时，说明在右墙左侧形成了低洼处，低洼处出栈并结算该低洼处能接的雨水
+        int total = 0;
+        Stack<Integer> stack = new Stack();
 
-        int water = 0;
-        Stack<Integer> stack = new Stack<>();
-        for (int right=0; right < arr.length; right++) {
-            // 栈不为空，且当前元素（右墙）比栈顶（右墙的左侧）大：说明形成低洼处了
-            while (!stack.isEmpty() && arr[right]>arr[stack.peek()]) {
-                // 低洼处弹出，尝试结算此低洼处能积攒的雨水
-                int bottom = stack.pop();
-                // 看看栈里还有没有东西（左墙是否存在）
-                // 有右墙+有低洼+没有左墙=白搭
+        for (int i = 0; i < arr.length; i++) {
+
+            // 当前遍历的值，大于栈顶数据，也就是说右边墙高于左边墙，这样才能存水
+            while (!stack.isEmpty() && arr[i] > arr[stack.peek()]) {
+
+                // 如果左边墙(当前左边墙有可能是最低洼处)从栈内弹出，且还存在另外的左边墙，则能存水
+                // 若弹出后 不存在其他左边墙，则无法存水
+                int pop = stack.pop();
                 if (stack.isEmpty()) {
                     break;
                 }
 
-                // 左墙位置以及左墙、右墙、低洼处的高度
-                int left = stack.peek();
-                int leftHeight = arr[left];
-                int rightHeight = arr[right];
-                int bottomHeight = arr[bottom];
+                int leftIdx = stack.peek();
+                int leftHeight = arr[leftIdx];    // 左边高度
+                int rightHeight = arr[i]; // 右边高度
+                int bottomHeight = arr[pop];  // 最低洼处
 
-                // 能积攒的水=(右墙位置-左墙位置-1) * (min(右墙高度, 左墙高度)-低洼处高度)
-                water += (right-left-1) * (Math.min(leftHeight, rightHeight)-bottomHeight);
+                // 当前左右两边可存水量 = {右边墙下标 - 左边墙下标 - 1(因为是下标，存水量需要去掉左右两边墙的下标) * （左右两边墙的最低处 - 中间最低洼处）}
+                total += (i - leftIdx - 1) * (Math.min(leftHeight, rightHeight) - bottomHeight);
+
             }
 
-            // 上面的pop循环结束后再push，保证stack是单调不增
-            stack.push(right);
+            stack.push(i);
+
         }
 
-        return water;
+        return total;
     }
 
 }
