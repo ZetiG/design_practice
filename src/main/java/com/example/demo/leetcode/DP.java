@@ -250,16 +250,6 @@ public class DP {
         return 0;
     }
 
-    public static void main(String[] args) {
-        System.err.println(minDistance("horse", "ros"));
-        // x  r  o  s
-        // h
-        // o
-        // r
-        // s
-        // e
-    }
-
     public static int minDistance(String word1, String word2) {
         int n1 = word1.length();
         int n2 = word2.length();
@@ -282,5 +272,65 @@ public class DP {
         }
         return dp[n1][n2];
     }
+
+
+    /**
+     * 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
+     *
+     * 解：思路，遍历所有数据，找出当前下标的左边最大值以及右边最大值，并取最小值，就是桶的最大高度，
+     *          然后减去当前下标值，就是当前下标所在桶的容量，最后所有桶相加即为总的容量
+     *
+     * ps1:
+     * 输入：height = [0,1,0,2,1,0,1,3,2,1,2,1]
+     * 输出：6
+     * 解释：上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。
+     *
+     * ps2:
+     * 输入：height = [4,2,0,3,2,5]
+     * 输出：9
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/trapping-rain-water
+     */
+    public static int dp7(int[] arr) {
+        // 测试数据
+//        int[] arr1 = {0,1,0,2,1,0,1,3,2,1,2,1};
+//        int[] arr2 = {0, 4, 2, 0, 3, 2, 5, 3};
+//        int[] arr3 = {4,2,0,3,2,5};
+
+        int length = arr.length;
+        if (length == 0) {
+            return 0;
+        }
+
+        int total = 0;
+
+        int[] leftMax = new int[length];
+        for (int i = 0; i < length; i++) {
+            if (i == 0) {
+                leftMax[i] = arr[i];
+                continue;
+            }
+            leftMax[i] = Math.max(leftMax[i - 1], arr[i]);
+        }
+
+
+        int[] rightMax = new int[length];
+        for (int i = length - 1; i >= 0; i--) {
+            if (i == length - 1) {
+                rightMax[i] = arr[i];
+                continue;
+            }
+            rightMax[i] = Math.max(rightMax[i + 1], arr[i]);
+        }
+
+        for (int i = 0; i < length; i++) {
+            total += Math.min(leftMax[i], rightMax[i]) - arr[i];
+        }
+
+        return total;
+    }
+
+
 
 }

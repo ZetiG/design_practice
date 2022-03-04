@@ -13,14 +13,17 @@ public class Rain_DP {
     public static void main(String[] args) {
         int[] arr1 = {0,1,0,2,1,0,1,3,2,1,2,1};
         int[] arr2 = {0, 4, 2, 0, 3, 2, 5, 3};
+        int[] arr3 = {4,2,0,3,2,5};
 
         // stack
         System.err.println(stack(arr1));
         System.err.println(stack(arr2));
+        System.err.println(stack(arr3));
 
         // DP
         System.err.println(trap(arr1));
         System.err.println(trap(arr2));
+        System.err.println(trap(arr3));
     }
 
     public static int stack(int[] arr) {
