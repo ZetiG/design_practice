@@ -18,6 +18,9 @@ public class Rain_DP {
         System.err.println(stack(arr1));
         System.err.println(stack(arr2));
 
+        // DP
+        System.err.println(trap(arr1));
+        System.err.println(trap(arr2));
     }
 
     public static int stack(int[] arr) {
@@ -56,5 +59,39 @@ public class Rain_DP {
 
         return total;
     }
+
+
+    /**
+     *
+     * @param height
+     * @return
+     */
+    public static int trap(int[] height) {
+        int n = height.length;
+        if (n == 0) {
+            return 0;
+        }
+
+        //  {0, 4, 2, 0, 3, 2, 5, 3};
+        // 正向遍历数组 height 得到数组 leftMax 的每个元素值
+        int[] leftMax = new int[n];
+        leftMax[0] = height[0];
+        for (int i = 1; i < n; i++) {
+            leftMax[i] = Math.max(leftMax[i - 1], height[i]);
+        }
+        // 反向遍历数组 height 得到数组 rightMax 的每个元素值
+        int[] rightMax = new int[n];
+        rightMax[n - 1] = height[n - 1];
+        for (int i = n - 2; i >= 0; i--) {
+            rightMax[i] = Math.max(rightMax[i + 1], height[i]);
+        }
+        // 遍历每个下标位置即可得到能接的雨水总量
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            ans += Math.min(leftMax[i], rightMax[i]) - height[i];
+        }
+        return ans;
+    }
+
 
 }
