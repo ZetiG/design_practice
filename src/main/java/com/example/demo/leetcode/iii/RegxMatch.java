@@ -23,11 +23,11 @@ public class RegxMatch {
 
     public static void main(String[] args) {
 
-        //        System.err.println(mt("aa", "a"));
-        //        System.err.println(mt("aa", "a*"));
-        //        System.err.println(mt("ab", ".*"));
-        //        System.err.println(mt("aab", "c*a*b"));
-        //        System.err.println(mt("mississippi", "mis*is*p*."));
+//        System.err.println(mt("aa", "a"));
+//        System.err.println(mt("aa", "a*"));
+//        System.err.println(mt("ab", ".*"));
+//        System.err.println(mt("aab", "c*a*b"));
+//        System.err.println(mt("mississippi", "mis*is*p*."));
 
 
 //        System.err.println(isMatch("aa", "a"));
