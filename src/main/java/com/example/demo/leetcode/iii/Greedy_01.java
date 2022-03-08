@@ -1,5 +1,7 @@
 package com.example.demo.leetcode.iii;
 
+import java.util.Arrays;
+
 /**
  * Description: 贪心算法-分糖果
  * n 个孩子站成一排。给你一个整数数组 ratings 表示每个孩子的评分。
@@ -33,10 +35,30 @@ public class Greedy_01 {
         int[] a4 = {1, 2, 87, 87, 87, 2, 1};
        // 应得苹果数  1  2  3   1   3   2  1
 
-        System.err.println(candy(a1)); // 5
-        System.err.println(candy(a2)); // 4
-        System.err.println(candy(a3)); // 7
-        System.err.println(candy(a4)); // 13
+        // 不成环状
+//        System.err.println(candy(a1)); // 5
+//        System.err.println(candy(a2)); // 4
+//        System.err.println(candy(a3)); // 7
+//        System.err.println(candy(a4)); // 13
+//        System.err.println(candy(new int[]{3, 4, 0, 1})); // 6
+
+        // --------------------------
+        // 成环状
+        int[] h1 = {3, 4, 0, 1};  // 10
+//        System.err.println(candy2(h1));
+
+        System.err.println(candy2(new int[]{2, 1, 6, 4, 3, 3, 3}));
+        // 2, 1, 6, 4, 3, 3, 3
+        // 0  1  2  1  1  1  2
+        // 0  1  3  2  1  1  2
+        // 0  1  3  2  1  1  2
+
+//        System.err.println(candy2(new int[]{}));
+//        System.err.println(candy2(new int[]{}));
+//        System.err.println(candy2(new int[]{}));
+
+        // TODO: 2022/3/8  
+
 
     }
 
@@ -61,6 +83,49 @@ public class Greedy_01 {
             ret += Math.max(left[i], right);
         }
         return ret;
+    }
+
+
+    public static int candy2(int[] ratings) {
+        // {3, 4, 0, 1}
+
+        // 1. 找出最小值下标
+        int minIdx = 0;
+        int min = ratings[0];
+        for (int i = 0; i < ratings.length; i++) {
+            if (ratings[i] < min) {
+                min =  ratings[i];
+                minIdx = i;
+            }
+        }
+
+        int[] ct = new int[ratings.length];
+        // 得到最小值以及下标后，从最小值处向后循环
+        for (int i = minIdx; i < ratings.length; i++) {
+           if (i == minIdx) {
+               ct[minIdx] = 1;
+               continue;
+           }
+
+           if (ratings[i] > ratings[i - 1]) {
+               ct[i] = ct[i - 1] + 1;
+           }
+
+        }
+
+        // 循环前半部分
+        for (int i = 0; i < minIdx; i++) {
+            if (i == 0) {
+                ct[i] = ratings[i] > ratings[ratings.length - 1] ? ct[ratings.length - 1] + 1 : 1;
+                continue;
+            }
+
+            if (ratings[i] > ratings[i - 1]) {
+                ct[i] = ct[i - 1] + 1;
+            }
+        }
+
+        return Arrays.stream(ct).sum();
     }
 
 
