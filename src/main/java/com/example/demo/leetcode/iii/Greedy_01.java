@@ -36,17 +36,18 @@ public class Greedy_01 {
         // 应得苹果数 1  2  3   1   3   2  1
 
         // 不成环状
-        System.err.println(candy(a1)); // 5
-        System.err.println(candy(a2)); // 4
-        System.err.println(candy(a3)); // 7
-        System.err.println(candy(a4)); // 13
-        System.err.println(candy(new int[]{3, 4, 0, 1})); // 6
+//        System.err.println(candy(a1)); // 5
+//        System.err.println(candy(a2)); // 4
+//        System.err.println(candy(a3)); // 7
+//        System.err.println(candy(a4)); // 13
+//        System.err.println(candy(new int[]{3, 4, 0, 1})); // 6
 
         // --------------------------
         // 成环状
         System.err.println(candy2(new int[]{3, 4, 0, 1}));  // 10
 
         System.err.println(candy2(new int[]{2, 1, 6, 4, 3, 3, 3})); // 13
+        System.err.println(candy2(a4)); // 13
 
 
     }
@@ -105,8 +106,8 @@ public class Greedy_01 {
 
         // 上一步，反向循环
         for (int i = ratings.length - 1; i > minIdx; i--) {
-            if (i < ratings.length - 1 && ratings[i - 1] > ratings[i]) {
-                ct[i - 1] = Math.max(ct[i - 1], ct[i] + 1);
+            if (i < ratings.length - 1 && ratings[i] > ratings[i + 1]) {
+                ct[i] = Math.max(ct[i], ct[i + 1] + 1);
             } else {
                 ct[i] = Math.max(ct[i], 1);
             }
