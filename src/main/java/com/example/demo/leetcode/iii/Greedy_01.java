@@ -36,11 +36,11 @@ public class Greedy_01 {
         // 应得苹果数 1  2  3   1   3   2  1
 
         // 不成环状
-//        System.err.println(candy(a1)); // 5
-//        System.err.println(candy(a2)); // 4
-//        System.err.println(candy(a3)); // 7
-//        System.err.println(candy(a4)); // 13
-//        System.err.println(candy(new int[]{3, 4, 0, 1})); // 6
+        System.err.println(candy(a1)); // 5
+        System.err.println(candy(a2)); // 4
+        System.err.println(candy(a3)); // 7
+        System.err.println(candy(a4)); // 13
+        System.err.println(candy(new int[]{3, 4, 0, 1})); // 6
 
         // --------------------------
         // 成环状
