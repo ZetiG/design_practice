@@ -1,4 +1,4 @@
-package com.example.demo.tree.binary_tree;
+package com.example.demo.data_structure.tree.binary_tree;
 
 import java.math.BigInteger;
 import java.util.LinkedList;

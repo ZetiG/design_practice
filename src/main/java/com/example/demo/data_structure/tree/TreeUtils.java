@@ -1,4 +1,4 @@
-package com.example.demo.tree;
+package com.example.demo.data_structure.tree;
 
 import org.springframework.util.CollectionUtils;
 
@@ -36,9 +36,7 @@ public class TreeUtils {
             }
         }
 
-        roots.forEach(r -> {
-            setChildren(r, nodes);
-        });
+        roots.forEach(r -> setChildren(r, nodes));
         return roots;
     }
 

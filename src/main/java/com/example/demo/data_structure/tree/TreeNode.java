@@ -1,4 +1,4 @@
-package com.example.demo.tree;
+package com.example.demo.data_structure.tree;
 
 import java.util.List;
 
