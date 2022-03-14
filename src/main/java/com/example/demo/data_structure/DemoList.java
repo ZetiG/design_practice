@@ -3,7 +3,6 @@ package com.example.demo.data_structure;
 import lombok.NonNull;
 import org.apache.commons.lang3.RandomUtils;
 
-import java.util.ArrayDeque;
 import java.util.Stack;
 
 /**
@@ -14,8 +13,10 @@ import java.util.Stack;
  */
 public class DemoList {
     final int maxLevel = 16;
-    Node headNode;
-//    int currentLevel = 1;
+    Node headNode = new Node(Integer.MIN_VALUE, null, null);
+
+    public DemoList() {
+    }
 
     public DemoList(Node headNode) {
         this.headNode = headNode;
@@ -24,22 +25,68 @@ public class DemoList {
     public static void main(String[] args) {
 
         // [30, 40, 50, 60, 70, 90] ，然后增加 80、45
-        DemoList dl = new DemoList(new Node(null, null, null));
+        DemoList dl = new DemoList();
 
-        int[] arr = new int[]{30, 40, 50, 60, 70, 90};
-        for (int i = 0; i < arr.length; i++) {
-            dl.add(arr[i]);
-        }
+//        int[] arr = new int[]{30, 40, 50, 60, 70, 90};
+//        for (int i = 0; i < arr.length; i++) {
+//            dl.add(arr[i]);
+//        }
+//
+//        dl.add(80);
+//        dl.add(45);
+//
+//        System.err.println(" ");
+//        System.err.println("-------------------");
+//        System.err.println(" ");
+//
+//        dl.erase(30);
 
-        dl.add(80);
-        dl.add(45);
+        // add
+        dl.add(16);
+        dl.add(5);
+        dl.add(14);
+        dl.add(13);
+        dl.add(0);
+        dl.add(3);
+        dl.add(12);
+        dl.add(9);
+        dl.add(12);
+        dl.erase(3);
 
-        System.err.println(" ");
-        System.err.println("-------------------");
-        System.err.println(" ");
+        dl.search(6);
+        dl.add(7);
+        dl.erase(0);
+        dl.erase(1);
+        dl.erase(10);
+        dl.add(5);
+        dl.search(12);
+        dl.search(7);
+        dl.search(16);
+        dl.erase(7);
+
+        dl.search(0);
+        dl.add(9);
+        dl.add(16);
+        dl.add(3);
+        dl.erase(2);
+        dl.search(17);
+        dl.add(2);
+        dl.search(17);
+        dl.erase(0);
+        dl.search(9);
+
+        dl.search(14);
+        dl.erase(1);
+        dl.erase(6);
+        dl.add(1);
+        dl.erase(16);
+        dl.search(9);
+        dl.erase(10);
+        dl.erase(9);
+        dl.search(2);
+        dl.add(3);
 
 
-        dl.erase(30);
 
     }
 
@@ -47,7 +94,7 @@ public class DemoList {
         return searchTarget(target) != null;
     }
 
-    public Node searchTarget(int target) {
+    private Node searchTarget(int target) {
         Node hd = this.headNode;
 
         while (hd != null) {
@@ -55,7 +102,7 @@ public class DemoList {
                 return hd;
             }
 
-            if (hd.right != null && hd.right.val < target) {
+            if (hd.right != null && hd.right.val <= target) {
                 hd = hd.right;
             } else {
                 hd = hd.down;
@@ -80,11 +127,6 @@ public class DemoList {
 
         // 创建当前待插入节点
         Node hd = this.headNode;
-        if (hd == null || hd.val == null) {
-            this.headNode = new Node(num, null, null);
-            return;
-        }
-
         Stack<Node> stk = new Stack<>();
         while (hd != null) {
             if (hd.val == num || hd.right == null || hd.right.val > num) {
@@ -96,7 +138,6 @@ public class DemoList {
         }
 
         int level = 1;
-
         Node lastDown = null;
         while (!stk.empty()) {
 
@@ -109,9 +150,13 @@ public class DemoList {
                 return;
             }
 
+            if (!stk.empty()) {
+                continue;
+            }
+
             level++;
 
-            Node levelHeadNode = new Node(this.headNode.val, null, null);
+            Node levelHeadNode = new Node(Integer.MIN_VALUE, null, null);
             levelHeadNode.down = this.headNode;
             this.headNode = levelHeadNode;
             stk.push(this.headNode);
@@ -120,28 +165,22 @@ public class DemoList {
 
 
     public boolean erase(int num) {
-//        Node hd = this.headNode;
-//
-//        ArrayDeque<Node> deque = new ArrayDeque<>();
-//
-//        while (hd != null) {
-//            if (hd.val != null && hd.val == num) {
-//                deque.push(hd);
-//
-//                if (hd.down == null) {
-//
-//                }
-//            }
-//
-//            if (hd.right != null && hd.right.val < num) {
-//                hd = hd.right;
-//            } else {
-//                hd = hd.down;
-//            }
-//
-//        }
-//
-        return true;
+        Node hd = this.headNode;
+
+        boolean flag = false;
+        while (hd != null) {
+            if (hd.right != null && hd.right.val == num) {
+                flag = true;
+                hd.right = hd.right.right;
+            }
+
+            if (hd.right != null && hd.right.val < num) {
+                hd = hd.right;
+            } else {
+                hd = hd.down;
+            }
+        }
+        return flag;
     }
 
 
