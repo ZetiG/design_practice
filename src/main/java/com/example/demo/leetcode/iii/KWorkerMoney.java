@@ -57,6 +57,7 @@ public class KWorkerMoney {
         // 工人质量和
         double sumQ = 0d;
 
+        // 优先级队列，完全二叉树，构成大根堆/小根堆，每次新增或删除元素时，自动重新构建堆，底层为数组，初始长度为11
         PriorityQueue<Double> queue = new PriorityQueue<>();
 
         // 遍历这些工人
