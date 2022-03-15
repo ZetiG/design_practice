@@ -1,6 +1,5 @@
 package com.example.demo.data_structure;
 
-import lombok.NonNull;
 import org.apache.commons.lang3.RandomUtils;
 
 import java.util.Stack;
@@ -11,21 +10,18 @@ import java.util.Stack;
  * @author Zeti
  * @date 2022/3/14 10:36 AM
  */
-public class DemoList {
-    final int maxLevel = 16;
+public class SkipIntegerList {
+    static final int maxLevel = 16;
     Node headNode = new Node(Integer.MIN_VALUE, null, null);
 
-    public DemoList() {
+    public SkipIntegerList() {
     }
 
-    public DemoList(Node headNode) {
-        this.headNode = headNode;
-    }
 
     public static void main(String[] args) {
 
         // [30, 40, 50, 60, 70, 90] ，然后增加 80、45
-        DemoList dl = new DemoList();
+        SkipIntegerList dl = new SkipIntegerList();
 
 //        int[] arr = new int[]{30, 40, 50, 60, 70, 90};
 //        for (int i = 0; i < arr.length; i++) {
@@ -86,7 +82,70 @@ public class DemoList {
         dl.search(2);
         dl.add(3);
 
+        // "add","erase","erase","erase","add","erase","add","erase","erase","add",
+        // [16],[15],[12],[7],[4],[3],[2],[1],[14],[13],
+        dl.add(16);
+        dl.erase(15);
+        dl.erase(12);
+        dl.erase(7);
+        dl.add(4);
+        dl.erase(3);
+        dl.add(2);
+        dl.erase(1);
+        dl.erase(14);
+        dl.add(13);
 
+        // "add","add","search","search","add","erase","search","add","add","search",
+        // [12],[3],[6],[17],[2],[3],[14],[11],[0],[13],
+        dl.add(12);
+        dl.add(3);
+        dl.search(6);
+        dl.search(17);
+        dl.add(2);
+        dl.erase(3);
+        dl.search(14);
+        dl.add(11);
+        dl.add(0);
+        dl.search(13);
+
+        // "add","search","erase","erase","search","search","erase","search","add","erase",
+        // [2],[1],[10],[17],[0],[5],[8],[9],[8],[11],
+        dl.add(2);
+        dl.add(1);
+        dl.add(10);
+        dl.add(17);
+        dl.add(0);
+        dl.add(5);
+        dl.add(8);
+        dl.add(9);
+        dl.add(8);
+        dl.add(11);
+
+        // "search","erase","search","erase","erase","search","search","add","add","add",
+        // [10],[11],[10],[9],[8],[15],[14],[1],[6],[17],
+        dl.search(10);
+        dl.erase(11);
+        dl.search(10);
+        System.err.println(dl.erase(9));
+        dl.erase(8);
+        dl.search(15);
+        dl.search(14);
+        dl.add(1);
+        dl.add(6);
+        dl.add(17);
+
+        // "add","search","search","search","search","search","search","search","search","search"]
+        // [16],[13],[4],[5],[4],[17],[16],[7],[14],[1]]
+        dl.add(16);
+        dl.search(13);
+        dl.search(4);
+        dl.search(5);
+        dl.search(4);
+        dl.search(17);
+        dl.search(16);
+        dl.search(7);
+        dl.search(14);
+        dl.search(1);
 
     }
 
@@ -116,14 +175,14 @@ public class DemoList {
     //  1 2 3 4 5 6 7 8
     public void add(int num) {
         // 已存在跳表内，直接替换val
-        Node node = searchTarget(num);
-        if (node != null) {
-            while (node != null) {
-                node.val = num;
-                node = node.down;
-            }
-            return;
-        }
+//        Node node = searchTarget(num);
+//        if (node != null) {
+//            while (node != null) {
+//                node.val = num;
+//                node = node.down;
+//            }
+//            return;
+//        }
 
         // 创建当前待插入节点
         Node hd = this.headNode;
