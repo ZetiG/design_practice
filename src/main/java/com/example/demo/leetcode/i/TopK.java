@@ -18,16 +18,29 @@ public class TopK {
     public static void main(String[] args) {
         int[] a1 = {6,4,7,3,9,8,1,2,5,0};
         int k1 = 5;
-        
+
+        // {6,4,7,3,9,8,1,2,5,0};
+        // {0,1,2,3,4,5,6,7,8,9};
         int[] a2 = {6,4,7,3,9,8,1,2,5,0};
         int k2 = 8;
 
+        // 前k个元素
         System.err.println(topK(a1, k1));
         System.err.println(topK(a2, k2));
-        
+
+        // 第k大元素
+        System.err.println(findK(a1, k1));
+        System.err.println(findK(a2, k2));
+
     }
 
-
+    /**
+     * TopK
+     *
+     * @param arr
+     * @param k
+     * @return
+     */
     public static Object[] topK(int[] arr, int k) {
         PriorityQueue<Integer> queue = new PriorityQueue();
 
@@ -48,5 +61,29 @@ public class TopK {
         return queue.toArray();
     }
 
+
+    /**
+     * 给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
+     * 请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
+     *
+     * 解答：1.排序，然后找出第k大的元素
+     *      2.小根堆，构建k数量的小根堆，取堆顶
+     *
+     * @return
+     */
+    public static int findK(int[] nums, int k) {
+        PriorityQueue<Integer> queue = new PriorityQueue();
+        for (int i = 0; i < nums.length; i++) {
+            if (queue.size() >= k) {
+                if (nums[i] > queue.peek()) {
+                    queue.remove();
+                } else {
+                    continue;
+                }
+            }
+            queue.add(nums[i]);
+        }
+        return queue.peek();
+    }
 
 }
