@@ -19,11 +19,6 @@ import java.util.List;
  * @author Zeti
  * @date 2022/3/15 5:31 PM
  */
-/**
- *
- * <p>
-
- */
 public class BinaryTreeTraversal {
 
     //               8
