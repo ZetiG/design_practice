@@ -30,7 +30,8 @@ public class MaxValue_DP {
     // 1 3 4 5
     // 3 4 5 2
     // 6 2 4 1
-
+    // DP核心思想：当前计算结果依赖上一步的计算结果；所以这里每一步都保存向右和向下的最优解，
+    // 这样下次计算的最优解就是 f(m,n) = MAX(f(m-1, n), f(m, n-1)) + f(m,n)
     public static int maxValue(int[][] grid) {
         int m = grid.length, n = grid[0].length;
         for (int i = 0; i < m; i++) {
@@ -52,7 +53,7 @@ public class MaxValue_DP {
 
 
 
-        // 转移方程推导
+    // 转移方程推导
     // 向右走，f(i,j) ← f(i−1,j) + grid(i,j)
     // 向下走，f(i,j) ← f(i,j-1) + grid(i,j)
     // f(i, j) = max{f(i - 1, j), f(i, j - 1)} + grid[i][j]
