@@ -1,4 +1,4 @@
-package com.example.demo.leetcode.文本相识度匹配;
+package com.example.demo.leetcode.文本相似度匹配;
 
 
 import org.apache.commons.collections4.SetUtils;
