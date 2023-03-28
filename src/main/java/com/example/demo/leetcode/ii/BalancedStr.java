@@ -19,14 +19,14 @@ package com.example.demo.leetcode.ii;
 public class BalancedStr {
 
     public static void main(String[] args) {
-        //        String s1 = "QWER";
-        //        System.err.println(balancedString(s1));
-        //
-        //        String s2 = "QQER";
-        //        System.err.println(balancedString(s2));
-        //
-        //        String s3 = "QQQR";
-        //        System.err.println(balancedString(s3));
+                String s1 = "QWER";
+                System.err.println(balancedString(s1));
+
+                String s2 = "QQER";
+                System.err.println(balancedString(s2));
+
+                String s3 = "QQQR";
+                System.err.println(balancedString(s3));
 
         String s4 = "WWEQERQWQWWRWWERQWEQ";
         System.err.println(balancedString(s4));
@@ -35,31 +35,6 @@ public class BalancedStr {
 
     // W W E Q E R Q W Q W  W  R  W  W  E  R  Q  W  E  Q
     // 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
-    public static int balancedString2(String s) {
-        int[] cnt = new int[4];
-        String t = "QWER";
-        for (int i = 0; i < s.length(); ++i) {
-            cnt[t.indexOf(s.charAt(i))]++;
-        }
-        int m = s.length() / 4;
-        if (cnt[0] == m && cnt[1] == m && cnt[2] == m && cnt[3] == m) {
-            return 0;
-        }
-        int ans = s.length();
-        for (int i = 0, j = 0; i < s.length(); ++i) {
-            char c = s.charAt(i);
-            int idx = t.indexOf(c);
-            cnt[idx]--;
-            while (j <= i && cnt[0] <= m && cnt[1] <= m && cnt[2] <= m && cnt[3] <= m) {
-                ans = Math.min(ans, i - j + 1);
-                char c1 = s.charAt(j++);
-                int idx2 = t.indexOf(c1);
-                cnt[idx2]++;
-            }
-        }
-        return ans;
-    }
-
     public static int balancedString(String s) {
         int sLen = s.length();
         int[] ct = new int[4];
