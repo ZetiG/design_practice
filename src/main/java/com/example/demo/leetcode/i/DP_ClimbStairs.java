@@ -9,7 +9,7 @@ package com.example.demo.leetcode.i;
  * @author Zeti
  * @date 2023/3/30 17:02
  */
-public class ClimbStairs_dp {
+public class DP_ClimbStairs {
 
     public static void main(String[] args) {
         int n1 = 2;
