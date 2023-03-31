@@ -10,7 +10,7 @@ package com.example.demo.leetcode.ii;
  * @author Zeti
  * @date 2023/3/8 15:54
  */
-public class MaxValue_DP {
+public class DP_MaxValue {
 
     public static void main(String[] args) {
         // [
