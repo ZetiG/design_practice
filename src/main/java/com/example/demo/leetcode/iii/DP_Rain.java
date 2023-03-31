@@ -8,7 +8,7 @@ import java.util.Stack;
  * @author Zeti
  * @date 2022/3/3 5:14 PM
  */
-public class Rain_DP {
+public class DP_Rain {
 
     public static void main(String[] args) {
         int[] arr1 = {0,1,0,2,1,0,1,3,2,1,2,1};
