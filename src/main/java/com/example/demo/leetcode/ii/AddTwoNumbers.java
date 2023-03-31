@@ -38,32 +38,40 @@ public class AddTwoNumbers {
 
     // 暴力循环，缓存进位
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        // 缓存进位值，节点相加满10进位1，缓存起来供后续使用
         int cache = (l1.val + l2.val) / 10;
         ListNode minNode = new ListNode((l1.val + l2.val) % 10);
+        // 当两个链表都只有一个元素时
         if (l1.next == null && l2.next == null) {
-            if (cache > 0) {
+            if (cache > 0) {    // 且缓存值的进位值不为0
                 minNode.next = new ListNode(cache);
             }
             return minNode;
         }
+
+        // 前面已经处理过首节点，这里直接处理下个节点
         l1 = l1.next;
         l2 = l2.next;
 
-        ListNode ln = minNode;
+        ListNode currentNode = minNode; // 当前待处理的节点
         while (l1 != null || l2 != null) {
+            // 考虑两个链表长度不一致的情况，短的补0计算
             int v1 = l1 == null ? 0 : l1.val;
             int v2 = l2 == null ? 0 : l2.val;
 
             ListNode listNode = new ListNode((v1 + v2 + cache) % 10);
-            ln.next = listNode;
-            ln = listNode;
+            currentNode.next = listNode; // 当前节点的下个节点
+            currentNode = listNode; // 将新生成的节点标记为当前节点，准备进入下次处理
 
+            // 重新缓存满10进位值
             cache = (v1 + v2 + cache) / 10;
 
+            // 准备进入下次循环，提前移动两个链表指向的节点，
             l1 = l1 == null ? null : l1.next;
             l2 = l2 == null ? null : l2.next;
+            // 如果两个链表后面都没有数据了，则代表已经处理完成，并判断是否留有缓存的进位值，有的话则生成一个新的节点追加在最后并返回结果
             if (l1 == null && l2 == null && cache > 0) {
-                ln.next = new ListNode(cache);
+                currentNode.next = new ListNode(cache);
                 return minNode;
             }
         }
