@@ -1,4 +1,4 @@
-package com.example.demo.leetcode.i;
+package com.example.demo.leetcode.ii;
 
 /**
  * Description: 198. 打家劫舍
@@ -24,6 +24,9 @@ public class DP_Burglary {
 
         int[] n3 = {2, 1, 1, 2}; // 4
         System.err.println(rob(n3));
+
+        int[] n4 = {2, 1}; // 2
+        System.err.println(rob(n4));
 
     }
 
