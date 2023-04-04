@@ -15,7 +15,7 @@ package com.example.demo.leetcode.ii;
  * @author Zeti
  * @date 2023/3/1 16:16
  */
-public class Greedy_jump {
+public class DP_CanJump2 {
 
     public static void main(String[] args) {
         // 输入: nums = [2,3,1,1,4]
@@ -38,8 +38,23 @@ public class Greedy_jump {
 
     }
 
-    // {2, 3, 1, 1, 4}
+    // [2,3,1,1,4]
+    //  0 1 1 2 2
+    // DP双指针；遍历到达每个元素的最小距离
     public static int jump(int[] nums) {
+        int n = nums.length;
+        int[] dp = new int[n];
+        for (int i = 1, j = 0; i < n; i++) {
+            while (j + nums[j] < i) {
+                j++;
+            }
+            dp[i] = dp[j] + 1;
+        }
+        return dp[n - 1];
+    }
+
+    // {2, 3, 1, 1, 4}
+    public static int jump2(int[] nums) {
         if (nums.length <= 1) {
             return 0;
         }
