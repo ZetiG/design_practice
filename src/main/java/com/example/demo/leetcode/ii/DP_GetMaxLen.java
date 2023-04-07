@@ -15,21 +15,25 @@ package com.example.demo.leetcode.ii;
 public class DP_GetMaxLen {
 
     public static void main(String[] args) {
-        int[] n1 = {1,-2,-3,4,0}; // 4
-        System.err.println(getMaxLen(n1));
+//        int[] n1 = {1,-2,-3,4,0}; // 4
+//        System.err.println(getMaxLen(n1));
+//
+//        int[] n2 = {0,1,-2,-3,-4}; // 3
+//        System.err.println(getMaxLen(n2));
+//
+//        int[] n3 = {-1,-2,-3,0,1};  // 2
+//        System.err.println(getMaxLen(n3));
+//
+//        int[] n4 = {-1,2};  // 1
+//        System.err.println(getMaxLen(n4));
+//
+//        int[] n5 = {5,-20,-20,-39,-5,0,0,0,36,-32,0,-7,-10,-7,21,20,-12,-34,26,2};  // 8
+//        //          0  1   2   3  4  5 6 7 8  9  10 11  12 13 14 15  15  17 18 19
+//        System.err.println(getMaxLen(n5));
 
-        int[] n2 = {0,1,-2,-3,-4}; // 3
-        System.err.println(getMaxLen(n2));
-
-        int[] n3 = {-1,-2,-3,0,1};  // 2
-        System.err.println(getMaxLen(n3));
-
-        int[] n4 = {-1,2};  // 1
-        System.err.println(getMaxLen(n4));
-
-        int[] n5 = {5,-20,-20,-39,-5,0,0,0,36,-32,0,-7,-10,-7,21,20,-12,-34,26,2};  // 8
-        //          0  1   2   3  4  5 6 7 8  9  10 11  12 13 14 15  15  17 18 19
-        System.err.println(getMaxLen(n5));
+        int[] n6 = {5,-20,-20,-39,-5};  // 8
+        //          0  1   2   3  4
+        System.err.println(getMaxLen(n6));
 
     }
 
