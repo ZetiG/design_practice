@@ -6,11 +6,14 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Description: 找出字符串中最长的回文子串
+ * Description: 5. 最长回文子串
  * ps1: 输入：s = "babad"  输出："bab"    解释："aba" 同样是符合题意的答案。
  * ps2: 输入：s = "cbbd"   输出："bb"
  * ps3: 输入：s = "a"      输出："a"
  * ps4: 输入：s = "ac"     输出："a"
+ *
+ * 给你一个字符串 s，找到 s 中最长的回文子串。
+ * 如果字符串的反序与原始字符串相同，则该字符串称为回文字符串。
  *
  * @author Zeti
  * @date 2022/1/20 4:25 PM
@@ -18,26 +21,61 @@ import java.util.List;
 public class PalindromeString {
 
     public static void main(String[] args) {
-        String s1 = "babcad";
-        String s2 = "babad";
-        String s3 = "cbbd";
-        String s4 = "a";
-        String s5 = "ac";
-        String s6 = "ccc";
-        String s7 = "aacabdkacaa";
-        String s8 = "xaabacxcabaaxcabaax";
 
-        System.err.println(getStr(s1));
-        System.err.println(getStr(s2));
-        System.err.println(getStr(s3));
-        System.err.println(getStr(s4));
-        System.err.println(getStr(s5));
-        System.err.println(getStr(s6));
-        System.err.println(getStr(s7));
-        System.err.println(getStr(s8));
+        System.err.println(longestPalindrome("babcad"));
+        System.err.println(longestPalindrome("babad"));
+        System.err.println(longestPalindrome("cbbd"));
+        System.err.println(longestPalindrome("a"));
+        System.err.println(longestPalindrome("ac"));
+        System.err.println(longestPalindrome("ccc"));
+        System.err.println(longestPalindrome("aacabdkacaa"));
+        System.err.println(longestPalindrome("xaabacxcabaaxcabaax"));
 
-        System.err.println(longestPalindrome(s8));
+    }
 
+    //   b a b c a d
+    // b 1 0 1 0 0 0
+    // a   1
+    // b     1
+    // c       1
+    // a         1
+    // d           1
+    public static String longestPalindrome(String s) {
+        char[] chars = s.toCharArray();
+        int maxLen = 1;
+        int subStringStartIdx = 0;
+
+        boolean[][] dp = new boolean[s.length()][s.length()];
+
+        // 遍历所有可能的回文串的长度
+        for (int len = 1; len <= chars.length; len++) {
+            // 当回文串长度为len时，left为左边起始点，right为右边终点
+            for (int left = 0; left < chars.length; left++) {
+                // 通过len可计算出right的位置
+                int right = left + len - 1;
+                if (right >= chars.length) {
+                    break;
+                }
+                if (left == right) {
+                    dp[left][right] = true;
+                }
+
+                if (right > left && chars[left] == chars[right]) {
+                    if (right - left < 3) {    // 长度<=3, 且char[i] = char[j], 则一定是回文串
+                        dp[left][right] = true;
+                    } else {
+                        dp[left][right] = dp[left+1][right-1];    // 长度大于3，且char[i] = char[j], 则判断去头斩尾后的子串是否是回文串
+                    }
+                }
+
+                if (dp[left][right] && right-left+1 > maxLen) {
+                    maxLen = right-left+1;
+                    subStringStartIdx = left;
+                }
+            }
+        }
+
+        return s.substring(subStringStartIdx, subStringStartIdx+maxLen);
     }
 
     // d1
@@ -89,7 +127,7 @@ public class PalindromeString {
     }
 
     // d2 动态规划
-    public static String longestPalindrome(String s) {
+    public static String longestPalindrome_2(String s) {
         //边界条件判断
         if (s.length() < 2)
             return s;
