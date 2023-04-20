@@ -18,7 +18,7 @@ import java.util.List;
  * @author Zeti
  * @date 2022/1/20 4:25 PM
  */
-public class PalindromeString {
+public class DP_PalindromeString {
 
     public static void main(String[] args) {
 
