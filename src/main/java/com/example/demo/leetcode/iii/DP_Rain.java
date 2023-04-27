@@ -97,4 +97,33 @@ public class DP_Rain {
     }
 
 
+    // 慢方法，1087ms
+    public static int trap_3(int[] height) {
+        int len = height.length;
+        if (len < 3) {
+            return 0;
+        }
+
+        int res = 0;
+        int left = 0, right = len-1;
+
+        // 遍历每个元素，内部获取当前元素左右两边的最大值
+        for (int i = 1; i < len - 1; i++) {
+            int leftMax = 0, rightMax = 0;
+
+            while (left < i && right > i) {
+                leftMax = Math.max(leftMax, height[left]);
+                rightMax = Math.max(rightMax, height[right]);
+
+                if (height[left] <= height[right]) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+            res += Math.max(0, Math.min(leftMax, rightMax) - height[i]);
+        }
+        return res;
+    }
+
 }
