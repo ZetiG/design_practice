@@ -1,5 +1,8 @@
 package com.example.demo.leetcode.i;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * Description: 101. 对称二叉树
  * 给你一个二叉树的根节点 root ， 检查它是否轴对称。
@@ -28,11 +31,12 @@ public class IsSymmetric {
         System.err.println(isSymmetric(tn_1));
     }
 
-
     public static boolean isSymmetric(TreeNode root) {
-        return check(root.left, root.right);
+        return check(root.left, root.right);    // 方法1 递归
+//        return check2(root, root);    // 方法2 迭代
     }
 
+    // 递归
     public static boolean check(TreeNode l, TreeNode r) {
         if (l == null && r == null) {
             return true;
@@ -44,6 +48,30 @@ public class IsSymmetric {
             return check(l.left, r.right) && check(l.right, r.left);
         }
         return false;
+    }
+
+    // 迭代
+    public static boolean check2(TreeNode u, TreeNode v) {
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(u);
+        q.offer(v);
+        while (!q.isEmpty()) {
+            u = q.poll();
+            v = q.poll();
+            if (u == null && v == null) {
+                continue;
+            }
+            if ((u == null || v == null) || (u.val != v.val)) {
+                return false;
+            }
+
+            q.offer(u.left);
+            q.offer(v.right);
+
+            q.offer(u.right);
+            q.offer(v.left);
+        }
+        return true;
     }
 
 
