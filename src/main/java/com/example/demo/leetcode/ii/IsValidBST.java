@@ -18,26 +18,26 @@ import java.util.Deque;
 public class IsValidBST {
     public static void main(String[] args) {
         // root = [2,1,3] // 输出：true
-//        TreeNode t3 = new TreeNode(3);
-//        TreeNode t2 = new TreeNode(1);
-//        TreeNode t1 = new TreeNode(2, t2, t3);
-//        System.err.println(isValidBST(t1));
-//
-//        // root = [5,1,4,null,null,3,6] // 输出：false
-//        TreeNode t_5 = new TreeNode(6);
-//        TreeNode t_4 = new TreeNode(3);
-//        TreeNode t_3 = new TreeNode(4, t_4, t_5);
-//        TreeNode t_2 = new TreeNode(1);
-//        TreeNode t_1 = new TreeNode(5, t_2, t_3);
-//        System.err.println(isValidBST(t_1));
-//
-//        // [5,4,6,null,null,3,7] // false
-//        TreeNode td5 = new TreeNode(7);
-//        TreeNode td4 = new TreeNode(3);
-//        TreeNode td3 = new TreeNode(6, td4, td5);
-//        TreeNode td2 = new TreeNode(4);
-//        TreeNode td1 = new TreeNode(5, td2, td3);
-//        System.err.println(isValidBST(td1));
+        TreeNode t3 = new TreeNode(3);
+        TreeNode t2 = new TreeNode(1);
+        TreeNode t1 = new TreeNode(2, t2, t3);
+        System.err.println(isValidBST(t1));
+
+        // root = [5,1,4,null,null,3,6] // 输出：false
+        TreeNode t_5 = new TreeNode(6);
+        TreeNode t_4 = new TreeNode(3);
+        TreeNode t_3 = new TreeNode(4, t_4, t_5);
+        TreeNode t_2 = new TreeNode(1);
+        TreeNode t_1 = new TreeNode(5, t_2, t_3);
+        System.err.println(isValidBST(t_1));
+
+        // [5,4,6,null,null,3,7] // false
+        TreeNode td5 = new TreeNode(7);
+        TreeNode td4 = new TreeNode(3);
+        TreeNode td3 = new TreeNode(6, td4, td5);
+        TreeNode td2 = new TreeNode(4);
+        TreeNode td1 = new TreeNode(5, td2, td3);
+        System.err.println(isValidBST(td1));
 
         // [32,26,47,19,null,null,56,null,27] // false
         TreeNode td_6 = new TreeNode(56);
