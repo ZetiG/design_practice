@@ -1,6 +1,5 @@
 package com.example.demo._23_design_patterns.迭代器模式;
 
-import org.apache.flink.shaded.guava18.com.google.common.collect.Lists;
 
 /**
  * Description: 测试程序
