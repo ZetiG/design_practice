@@ -17,17 +17,17 @@ import java.util.Arrays;
 public class MinimumMountainRemovals {
 
     public static void main(String[] args) {
-//        int[] n1 = {1,3,1};
-//        System.err.println(minimumMountainRemovals(n1)); // 0
-//
-//        int[] n2 = {2,1,1,5,6,2,3,1};
-//        System.err.println(minimumMountainRemovals(n2)); // 3 删除下标为0、1、5； 剩余 [1,5,6,3,1]
-//
-//        int[] n3 = {23,47,63,72,81,99,88,55,21,33,32};
-//        System.err.println(minimumMountainRemovals(n3)); // 1
-//
-//        int[] n4 = {4,3,2,1,1,2,3,1};
-//        System.err.println(minimumMountainRemovals(n4)); // 4
+        int[] n1 = {1,3,1};
+        System.err.println(minimumMountainRemovals(n1)); // 0
+
+        int[] n2 = {2,1,1,5,6,2,3,1};
+        System.err.println(minimumMountainRemovals(n2)); // 3 删除下标为0、1、5； 剩余 [1,5,6,3,1]
+
+        int[] n3 = {23,47,63,72,81,99,88,55,21,33,32};
+        System.err.println(minimumMountainRemovals(n3)); // 1
+
+        int[] n4 = {4,3,2,1,1,2,3,1};
+        System.err.println(minimumMountainRemovals(n4)); // 4
 
         int[] n5 = {1,16,84,9,29,71,86,79,72,12};
         System.err.println(minimumMountainRemovals(n5)); // 2
