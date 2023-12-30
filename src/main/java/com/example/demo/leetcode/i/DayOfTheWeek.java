@@ -17,11 +17,9 @@ public class DayOfTheWeek {
     // 给定一个日期(Y-m-d) 返回当前是星期几
     public static void main(String[] args) {
         int y = 2019, m = 8, d = 31;
-//        System.err.println(dayOfTheWeek1(d, m, y));
-//        System.err.println(dayOfTheWeek2(d, m, y));
-//        System.err.println(dayOfTheWeek3(d, m, y));
-//        System.err.println(dayOfTheWeek4(d, m, y));
-
+        System.err.println(dayOfTheWeek1(d, m, y));
+        System.err.println(dayOfTheWeek2(d, m, y));
+        System.err.println(dayOfTheWeek3(d, m, y));
         System.err.println(dayOfTheWeek3(7, 3, 2003));
 
     }
