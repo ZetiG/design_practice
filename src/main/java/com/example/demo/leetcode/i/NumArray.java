@@ -1,7 +1,7 @@
 package com.example.demo.leetcode.i;
 
 /**
- * Description:
+ * Description: 303. 区域和检索 - 数组不可变
  *
  * @author Zeti
  * @date 2024/3/28 15:55
