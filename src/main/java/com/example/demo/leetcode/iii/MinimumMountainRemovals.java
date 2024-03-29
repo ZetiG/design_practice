@@ -32,13 +32,58 @@ public class MinimumMountainRemovals {
         int[] n5 = {1,16,84,9,29,71,86,79,72,12};
         System.err.println(minimumMountainRemovals(n5)); // 2
 
+        int[] n6 = {9,8,1,7,6,5,4,3,2,1};
+        System.err.println(minimumMountainRemovals(n6)); // 2
 
     }
+
+    public static int minimumMountainRemovals(int[] nums) {
+        int len = nums.length;
+
+        // 数组每个元素最为山峰时，左侧的元素个数(包含它本身)
+        int[] left = new int[len];
+        for (int i = 0; i < len; i++) {
+            left[i] = 1; // 这里默认为1，即它本身
+
+            // 从头遍历，逐个判断元素是否小于当前以i作为山峰的元素
+            for (int j = 0; j < len; j++) {
+                if (nums[i] > nums[j]) {
+                    // 保留当i为山峰时，左侧最长的递增子序
+                    left[i] = Math.max(left[i], left[j]+1);
+                }
+            }
+        }
+
+        // 同理，右侧递增子序
+        int[] right = new int[len];
+        for (int i = len-1; i >= 0; i--) {
+            right[i] = 1;
+
+            for (int j = len-1; j >= 0; j--) {
+                if (nums[i] > nums[j]) {
+                    right[i] = Math.max(right[i], right[j]+1);
+                }
+            }
+        }
+
+        int maxLen = 0; // 最大山峰长度
+        // 同时遍历左右两侧递增子序数量，当总和最大时，即为最长(最大)的山峰
+        for (int i = 0; i < len; i++) {
+            if (left[i] > 1 && right[i] > 1) {
+                maxLen = Math.max(maxLen, (left[i]+right[i])-1);    // 左右两侧同时将i作为山峰时统计的两次，这需要-1
+            }
+        }
+
+        // 数组长度-最大山峰长度=需要删除的元素个数
+        return len - maxLen;
+    }
+
+
 
     /**
      * 遍历，当数组的每个元素依次作为山峰时，定义两个数组存储左右两边各自需要删除的元素个数，答案最少的删除个数就是两个数组下标相同时，对应元素之和
      */
-    public static int minimumMountainRemovals(int[] nums) {
+    public static int minimumMountainRemovals2(int[] nums) {
 
         // 左侧最长递增子序
         int[] left = getLISArray(nums);
