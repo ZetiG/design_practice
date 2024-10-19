@@ -1,5 +1,8 @@
 package com.example.demo.leetcode.iii;
 
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 /**
  * Description: 295. 数据流的中位数
  * 中位数是有序整数列表中的中间值。如果列表的大小是偶数，则没有中间值，中位数是两个中间值的平均值。
@@ -19,23 +22,42 @@ package com.example.demo.leetcode.iii;
  */
 public class MedianFinder {
 
-    public MedianFinder() {
+    public static void main(String[] args) {
+        // ["MedianFinder", "addNum", "addNum", "findMedian", "addNum", "findMedian"]
+        //[[], [1], [2], [], [3], []]
+        MedianFinder obj = new MedianFinder();
+        obj.addNum(1);
+        System.err.println(obj.findMedian());   // 1
 
+        obj.addNum(2);
+        System.err.println(obj.findMedian());   // 1.5
+
+        obj.addNum(3);
+        System.err.println(obj.findMedian());   // 2
+
+    }
+
+    // a:小根堆，存储大于中间值的后一半；b:大根堆，存储小于等于中间值前一半；
+    private Queue<Integer> a, b;
+
+    public MedianFinder() {
+        a = new PriorityQueue<>(); // 小根堆，存储大于中间值的后一半
+        b = new PriorityQueue<>((x, y) -> (y - x));  // 大根堆，保存较小的一半
     }
 
     public void addNum(int num) {
-
+        if (a.size() != b.size()) {
+            a.add(num);
+            b.add(a.poll());
+        } else {
+            b.add(num);
+            a.add(b.poll());
+        }
     }
 
     public double findMedian() {
-        return 0L;
+        return a.size() != b.size() ? a.peek() : (a.peek() + b.peek()) / 2.0;
     }
 
-
-    public static void main(String[] args) {
-        MedianFinder obj = new MedianFinder();
-        obj.addNum(0);
-        double param_2 = obj.findMedian();
-    }
 
 }
