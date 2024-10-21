@@ -61,9 +61,7 @@ public class DecodeString {
             else if (cr == ']') {
                 int repeatTimes = countStack.pop();
                 StringBuilder previousStr = stringStack.pop();
-                for (int j = 0; j < repeatTimes; j++) {
-                    previousStr.append(currentStr);
-                }
+                previousStr.append(String.valueOf(currentStr).repeat(Math.max(0, repeatTimes)));
                 currentStr = previousStr;  // 处理后的部分替换当前字符串
             }
             // 否则就是正常字符，直接追加
