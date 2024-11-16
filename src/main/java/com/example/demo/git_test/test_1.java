@@ -6,5 +6,8 @@ package com.example.demo.git_test;
  * @author Zeti
  */
 public class test_1 {
-
+    private static String t1 = "t113";
+    public static void main(String[] args) {
+        System.err.println(t1);
+    }
 }
