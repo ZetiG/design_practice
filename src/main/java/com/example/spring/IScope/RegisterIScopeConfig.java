@@ -1,4 +1,4 @@
-package com.example.demo.spring.IScope;
+package com.example.spring.IScope;
 
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.beans.factory.config.Scope;

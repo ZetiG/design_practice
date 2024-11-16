@@ -5,11 +5,11 @@
        default-autowire="byName">
 
 
-    <bean id="beanPostProcessorTest" class="com.example.demo.spring.BeanPostProcessorTest"/>
-    <bean id="beanFactoryPostProcessorTest" class="com.example.demo.spring.BeanFactoryPostProcessorTest"/>
+    <bean id="beanPostProcessorTest" class="com.example.spring.BeanPostProcessorTest"/>
+    <bean id="beanFactoryPostProcessorTest" class="com.example.spring.BeanFactoryPostProcessorTest"/>
 
 
-    <bean id="personAction" class="com.example.demo.spring.PersonAction" init-method="init">
+    <bean id="personAction" class="com.example.spring.PersonAction" init-method="init">
         <property name="name" value="小z"/>
     </bean>
 
