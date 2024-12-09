@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class Test {
+public class SqlServerConnectTest {
 
     private static final String DBURL = "jdbc:sqlserver://122.224.87.50:1433;DataBaseName=AIS20221215160453";
     private static final String DBUSER = "ppy_read";
